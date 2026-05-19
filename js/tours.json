@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Travis Scott Tour Evolution — From Support Act to Stadium Headliner",
   "width": "container",
-  "height": 600,
+  "height": 530,
   "padding": {"top": 60, "bottom": 40, "left": 20, "right": 30},
   "background": "#c7bfa6",
   "config": {
