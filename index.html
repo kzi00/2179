@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Astroworld Effect — A Travis Scott Visual Essay</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+
+  <main class="dashboard">
+
+    <!-- HERO -->
+    <header class="hero">
+      <h1 class="hero-title">Travis Scott</h1>
+      <p class="hero-subtitle">A Cultural Phenomenon in modern Hip-Hop</p>
+      </div>
+    </header>
+
+    <!-- SECTION INTRO -->
+    <section class="section-intro">
+      <span class="section-label">Part One</span>
+      <h2 class="section-headline">The Rise Through Music</h2>
+      <p class="section-lede">
+        Every cultural movement begins with a catalogue. Before tours,
+        before brand deals, before the festivals that bear his name,
+        Travis Scott, born Jacques Bermon Webster II was simply an artist
+        building a body of work. This first chapter traces that catalogue,
+        when it arrived, how it landed, which tracks endured,
+        and how the world came to know it.
+      </p>
+    </section>
+
+    <!-- CHAPTER 01 — TIMELINE -->
+    <article class="chapter">
+      <div class="chapter-meta">
+        <span class="chapter-number">I</span>
+        <h3 class="chapter-title">From Mixtapes to Mainstream</h3>
+      </div>
+      <p class="chapter-description">
+        Before the streaming era, Travis Scott built his audience
+        through freely distributed mixtapes on platforms like DatPiff
+        and SoundCloud. What followed was a rapid succession of
+        projects that culminated in one of the most significant album
+        releases in modern hip-hop history.
+      </p>
+
+      <div class="graph-header">
+        <h4 class="graph-title">A Decade of Releases</h4>
+        <p class="graph-subtitle">Travis Scott's discography timeline, 2013 — 2025</p>
+      </div>
+
+      <div class="timeline-frame">
+        <div id="timeline" class="timeline-chart"></div>
+        <div id="release-overlay" class="release-overlay" aria-hidden="true"></div>
+        <div id="release-tooltip" class="release-tooltip" role="tooltip"></div>
+      </div>
+    </article>
+
+    <!-- CHAPTER 02 — FIRST WEEK SALES -->
+    <article class="chapter">
+      <div class="chapter-meta">
+        <span class="chapter-number">II</span>
+        <h3 class="chapter-title">How Each Release Landed</h3>
+      </div>
+      <p class="chapter-description">
+        The timeline shows when each project arrived. The numbers below
+        reveal how the world received them. Album-equivalent units —
+        the modern industry standard combining sales and streaming —
+        chart the moment when curiosity became consumption.
+      </p>
+
+      <div class="graph-header">
+        <h4 class="graph-title">First-Week Album Performance</h4>
+        <p class="graph-subtitle">Comparing the commercial scale of major releases across the streaming era</p>
+      </div>
+
+      <div class="chart-frame">
+        <div id="first-week-sales" class="chart"></div>
+      </div>
+    </article>
+
+    <!-- CHAPTER 03 — TOP SONGS -->
+    <article class="chapter">
+      <div class="chapter-meta">
+        <span class="chapter-number">III</span>
+        <h3 class="chapter-title">The Tracks That Carried the Catalogue</h3>
+      </div>
+      <p class="chapter-description">
+        Beneath every commercial peak lies a handful of songs that
+        carried the weight. While each album landed with its own
+        cultural moment, only a few tracks transcended their era and
+        became the cornerstones of his catalogue. The numbers below
+        reveal which songs the world chose to keep listening to —
+        long after the album cycles ended.
+      </p>
+
+      <div class="graph-header">
+        <h4 class="graph-title">The Songs That Defined an Era</h4>
+        <p class="graph-subtitle">Most-streamed Travis Scott tracks on Spotify, by parent album</p>
+      </div>
+
+      <div class="chart-frame">
+        <div id="top-songs" class="chart"></div>
+      </div>
+
+      <p class="data-note">
+        Streaming totals reflect cumulative Spotify plays as recorded
+        by kworb.net. Songs span solo work, album cuts, and standalone
+        singles released across his career.
+      </p>
+    </article>
+
+    <!-- SECTION 2 INTRO -->
+    <section class="section-intro">
+      <span class="section-label">Part Two</span>
+      <h2 class="section-headline">Expansion</h2>
+      <p class="section-lede">
+        Success rarely grows in isolation. As the music travelled further,
+        so did the network surrounding it. Collaborations placed Travis Scott
+        alongside some of the defining artists of the decade, extending his reach
+        beyond his own catalogue and into the wider fabric of contemporary music.
+        What began as momentum soon became visibility on a global scale,
+        with search interest spreading across continents and audiences turning
+        online attention into physical demand. This section follows that expansion,
+        tracing how an artist evolved into an international cultural presence.
+      </p>
+    </section>
+
+    <!-- CHAPTER 04 — COLLABORATION NETWORK -->
+    <article class="chapter">
+      <div class="chapter-meta">
+        <span class="chapter-number">IV</span>
+        <h3 class="chapter-title">The Ecosystem Behind the Empire</h3>
+      </div>
+      <p class="chapter-description">
+        Behind every chart-topping release lies an invisible network of
+        collaborators — artists who lent their voices, producers who
+        sculpted the sound, and a handful of recurring partners who became
+        the architects of a sonic universe. The diagram below maps that
+        ecosystem: every artist and producer who has worked with Travis
+        Scott on record, arranged by their place in modern music's
+        interconnected world.
+      </p>
+
+      <div class="graph-header">
+        <h4 class="graph-title">A Network of Collaboration</h4>
+        <p class="graph-subtitle">Travis Scott's complete recording ecosystem, by role and genre</p>
+      </div>
+
+      <div class="network-controls">
+        <div class="control-group">
+          <span class="control-label">Role</span>
+          <div class="toggle-group" id="role-toggles">
+            <button class="toggle-btn active" data-role="artist">Artists</button>
+            <button class="toggle-btn active" data-role="producer">Producers</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Frequency</span>
+          <div class="toggle-group" id="frequency-toggles">
+            <button class="toggle-btn active" data-frequency="all">All</button>
+            <button class="toggle-btn" data-frequency="low">Low</button>
+            <button class="toggle-btn" data-frequency="medium">Medium</button>
+            <button class="toggle-btn" data-frequency="high">High</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Year</span>
+          <select id="year-select" class="year-dropdown">
+            <option value="all">All Years</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2023">2023</option>
+            <option value="2025">2025</option>
+          </select>
+        </div>
+
+        <div class="control-group search-group">
+          <span class="control-label">Search</span>
+          <div class="search-wrapper">
+            <input type="text" id="search-input" class="search-input" placeholder="Search collaborators"
+              autocomplete="off" spellcheck="false" />
+            <button id="search-clear" class="search-clear" aria-label="Clear search">&times;</button>
+            <span id="search-no-results" class="search-no-results">No visible results under current filters.</span>
+          </div>
+        </div>
+
+        <div class="network-frame">
+          <div id="network" class="network-chart"></div>
+          <div id="network-tooltip" class="network-tooltip"></div>
+          <div class="network-legend">
+            <div class="legend-row">
+              <span class="legend-dot legend-circle"></span>
+              <span class="legend-label">Artist</span>
+            </div>
+            <div class="legend-row">
+              <span class="legend-dot legend-square"></span>
+              <span class="legend-label">Producer</span>
+            </div>
+            <div class="legend-size-note">Larger nodes = more collaborations</div>
+          </div>
+        </div>
+
+        <p class="data-note">
+          Collaboration data compiled from Travis Scott's studio discography,
+          including mixtapes, albums, and compilations from 2013 through 2025.
+          Node size reflects total career collaboration count; edge weight
+          reflects the cumulative recording relationship between Travis Scott
+          and each collaborator.
+        </p>
+    </article>
+
+    <!-- CHAPTER 05 — SEARCH INTEREST MAP -->
+    <article class="chapter">
+      <div class="chapter-meta">
+        <span class="chapter-number">V</span>
+        <h3 class="chapter-title">A Houston Sound Goes Global</h3>
+      </div>
+      <p class="chapter-description">
+        Commercial success in the United States was only the beginning.
+        As Travis Scott's catalogue expanded, so did the world's curiosity.
+        Google Trends data captures this shift — a measure of how often
+        people in each country searched his name. The map below traces
+        that curiosity, year by year, as a regional artist became a
+        global cultural reference point.
+      </p>
+
+      <div class="graph-header">
+        <h4 class="graph-title">Global Search Interest in Travis Scott</h4>
+        <p class="graph-subtitle">Country-level Google search interest, 2013 — 2025</p>
+      </div>
+
+      <div class="map-frame">
+        <div id="search-map" class="chart"></div>
+      </div>
+
+      <p class="data-note">
+        Search interest values are normalised by Google Trends on a 0 — 100 scale,
+        where 100 represents peak searches relative to total search volume in
+        that region. Countries with insufficient search volume in a given year
+        appear unshaded.
+      </p>
+    </article>
+
+    <!-- CHAPTER 06 — TOUR ATTENDANCE -->
+    <article class="chapter">
+      <div class="chapter-meta">
+        <span class="chapter-number">VI</span>
+        <h3 class="chapter-title">From Opening Act to Stadium Headliner</h3>
+      </div>
+      <p class="chapter-description">
+        Before Astroworld, Travis Scott was a name buried midway down arena
+        billing sheets from opening for Rihanna, to slotting in beneath Kendrick,
+        and riding Kanye's stage. The jump from support act to headliner
+        didn't happen gradually. It snapped. By 2024, he was filling
+        stadiums alone, pulling over two million through the gates on a
+        single tour cycle. The chart below traces that shift, tours
+        he joined as a supporting artist and every tour he owned, measured by the crowds that
+        showed up, showing the growth and how he overtook previous tours
+        where he was a supporting artist, currently peaking with Circus Maximus,
+        a tour based around the album Utopia, which is named the largest rap tour in history.
+      </p>
+
+      <div class="graph-header">
+        <h4 class="graph-title">Tour Attendance Growth</h4>
+        <p class="graph-subtitle">Headlining and supporting tour attendance, 2013 — 2025</p>
+      </div>
+
+      <div class="chart-frame">
+        <div class="tours-legend-hint">
+          <span class="tours-legend-dot tours-legend-dot--headline"></span>
+          <span class="tours-legend-label">Headlining</span>
+          <span class="tours-legend-dot tours-legend-dot--support"></span>
+          <span class="tours-legend-label">Supporting</span>
+        </div>
+        <div id="tours-chart" class="chart" role="img"
+          aria-label="Line chart showing Travis Scott tour attendance growth from 2013 to 2025, comparing headlining and supporting roles.">
+        </div>
+      </div>
+      <p class="data-note">
+        Some attendance totals and revenue figures for earlier tours are estimates
+        based on available reporting. Supporting tour figures reflect full tour
+        totals for the headlining artist, included for scale.
+      </p>
+    </article>
+
+    <!-- FOOTER -->
+    <footer class="dashboard-footer">
+      <p class="footer-line">
+        Data sourced from Billboard, kworb.net, Genius Lyrics, Wikipedia, and Google Trends.
+      </p>
+      <p class="footer-line">
+        Designed by The Goat
+      </p>
+    </footer>
+
+  </main>
+
+  <script src="js/timeline.js"></script>
+  <script src="js/first_week_sales.js"></script>
+  <script src="js/top_songs.js"></script>
+  <script src="js/search_interest.js"></script>
+  <script src="js/collaborations.js"></script>
+  <script src="js/tours.js"></script>
+
+</body>
+
+</html>
