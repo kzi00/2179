@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const SPEC_PATH = 'tours.json';
+  const SPEC_PATH = 'js/tours.json';
   const CONTAINER  = '#tours-chart';
 
   const EMBED_OPTS = {

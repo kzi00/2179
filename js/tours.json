@@ -42,7 +42,7 @@
     }
   },
   "data": {
-    "url": "../data/tours.csv",
+    "url": "/data/tours.csv",
     "format": {"type": "csv"}
   },
   "transform": [
