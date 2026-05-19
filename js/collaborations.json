@@ -1,0 +1,384 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Radial cluster network of Travis Scott's collaboration ecosystem.",
+  "width": 1200,
+  "height": 1000,
+  "padding": 0,
+  "autosize": "none",
+  "background": "#c7bfa6",
+
+  "signals": [
+    {"name": "cx", "update": "width / 2"},
+    {"name": "cy", "update": "height / 2"},
+    {"name": "showArtists",  "value": true},
+    {"name": "showProducers","value": true},
+    {"name": "selectedFrequency", "value": "all"},
+    {"name": "selectedYear",      "value": "all"},
+    {
+      "name": "zoomLevel",
+      "update": "selectedFrequency == 'high' ? 1.3 : selectedFrequency == 'medium' ? 1.15 : selectedFrequency == 'low' ? 1.05 : 1.0"
+    },
+    {
+      "name": "hoveredNode",
+      "value": null,
+      "on": [
+        {"events": "@nodes:mouseover", "update": "datum"},
+        {"events": "@nodes:mouseout",  "update": "null"}
+      ]
+    },
+    {"name": "searchTerm", "value": ""}
+  ],
+
+  "data": [
+    {
+      "name": "edges_raw",
+      "url": "data/collaborations_edge.csv",
+      "format": {"type": "csv", "parse": {"collaboration_count": "number", "year": "number"}}
+    },
+    {
+      "name": "nodes_raw",
+      "url": "data/collaborations_node.csv",
+      "format": {"type": "csv"}
+    },
+    {
+      "name": "artist_node_info",
+      "source": "nodes_raw",
+      "transform": [{"type": "filter", "expr": "datum.type == 'artist'"}]
+    },
+    {
+      "name": "artist_set",
+      "source": "edges_raw",
+      "transform": [
+        {"type": "filter", "expr": "datum.role == 'artist'"},
+        {"type": "aggregate", "groupby": ["collaborator"]}
+      ]
+    },
+    {
+      "name": "producer_set",
+      "source": "edges_raw",
+      "transform": [
+        {"type": "filter", "expr": "datum.role == 'producer'"},
+        {"type": "aggregate", "groupby": ["collaborator"]}
+      ]
+    },
+    {
+      "name": "edges_filtered",
+      "source": "edges_raw",
+      "transform": [
+        {"type": "filter", "expr": "(showArtists && datum.role == 'artist') || (showProducers && datum.role == 'producer')"},
+        {"type": "filter", "expr": "selectedFrequency == 'all' || datum.frequency == selectedFrequency"},
+        {"type": "filter", "expr": "selectedYear == 'all' || datum.year == +selectedYear"}
+      ]
+    },
+    {
+      "name": "edges_aggregated",
+      "source": "edges_filtered",
+      "transform": [
+        {"type": "aggregate", "groupby": ["collaborator", "role", "frequency"], "fields": ["collaboration_count"], "ops": ["sum"], "as": ["total"]}
+      ]
+    },
+    {
+      "name": "all_totals",
+      "source": "edges_raw",
+      "transform": [
+        {"type": "aggregate", "groupby": ["collaborator", "role"], "fields": ["collaboration_count"], "ops": ["sum"], "as": ["career_total"]},
+        {"type": "formula", "expr": "datum.collaborator + '|' + datum.role", "as": "node_key"}
+      ]
+    },
+    {
+      "name": "nodes_active",
+      "source": "edges_aggregated",
+      "transform": [
+        {"type": "formula", "expr": "datum.collaborator + '|' + datum.role", "as": "node_key"},
+        {"type": "lookup", "from": "all_totals", "key": "node_key", "fields": ["node_key"], "values": ["career_total"]},
+        {"type": "lookup", "from": "artist_node_info", "key": "node", "fields": ["collaborator"], "values": ["cluster"], "as": ["artist_cluster"]},
+        {"type": "lookup", "from": "producer_set", "key": "collaborator", "fields": ["collaborator"], "values": ["collaborator"], "as": ["found_as_producer"]},
+        {"type": "lookup", "from": "artist_set", "key": "collaborator", "fields": ["collaborator"], "values": ["collaborator"], "as": ["found_as_artist"]},
+        {"type": "formula", "expr": "datum.role == 'producer' ? 'Producer' : (datum.artist_cluster || 'Other')", "as": "cluster"},
+        {"type": "formula", "expr": "datum.collaborator", "as": "name"},
+        {"type": "formula", "expr": "(datum.role == 'artist' && datum.found_as_producer != null) || (datum.role == 'producer' && datum.found_as_artist != null)", "as": "is_dual_role"}
+      ]
+    },
+    {
+      "name": "cluster_layout",
+      "values": [
+        {"cluster": "Central",          "angle": 0,   "distance": 0,   "color": "#32006e"},
+        {"cluster": "Pop",              "angle": 0,   "distance": 293, "color": "#d0a8b0"},
+        {"cluster": "Mainstream Rap",   "angle": 24,  "distance": 258, "color": "#a85561"},
+        {"cluster": "Other",            "angle": 48,  "distance": 310, "color": "#9a9a9a"},
+        {"cluster": "Trap",             "angle": 72,  "distance": 258, "color": "#c4a05c"},
+        {"cluster": "Cactus Jack",      "angle": 96,  "distance": 231, "color": "#8a6a4a"},
+        {"cluster": "Producer",         "angle": 120, "distance": 328, "color": "#7a6a8a"},
+        {"cluster": "Southern Hip-Hop", "angle": 144, "distance": 263, "color": "#9c7a5d"},
+        {"cluster": "Drill",            "angle": 168, "distance": 306, "color": "#6a4a6a"},
+        {"cluster": "Dancehall",        "angle": 192, "distance": 258, "color": "#8a9c5d"},
+        {"cluster": "Cultural Figures", "angle": 213, "distance": 228, "color": "#8b7d9a"},
+        {"cluster": "International",    "angle": 236, "distance": 296, "color": "#9c5d7a"},
+        {"cluster": "Soul",             "angle": 260, "distance": 253, "color": "#9c8a5d"},
+        {"cluster": "Alternative",      "angle": 286, "distance": 291, "color": "#5d8a9c"},
+        {"cluster": "Psychedelic",      "angle": 310, "distance": 258, "color": "#5d7a9c"},
+        {"cluster": "Houston Legends",  "angle": 336, "distance": 278, "color": "#7a5d4a"}
+      ]
+    },
+    {
+      "name": "nodes_positioned",
+      "source": "nodes_active",
+      "transform": [
+        {"type": "lookup", "from": "cluster_layout", "key": "cluster", "fields": ["cluster"], "values": ["angle", "distance", "color"]},
+        {"type": "formula", "expr": "datum.angle != null ? datum.angle : 0",        "as": "base_angle"},
+        {"type": "formula", "expr": "datum.distance != null ? datum.distance : 250", "as": "base_distance"},
+        {"type": "window", "groupby": ["cluster"], "sort": {"field": "name", "order": "ascending"}, "ops": ["row_number", "count"], "fields": [null, null], "as": ["cluster_idx", "cluster_size"]},
+        {"type": "window", "sort": {"field": "career_total", "order": "descending"}, "ops": ["row_number", "count"], "fields": [null, null], "as": ["global_idx", "global_count"]},
+        {"type": "formula", "expr": "datum.base_distance * zoomLevel",              "as": "cluster_dist"},
+        {"type": "formula", "expr": "datum.base_angle * PI / 180",                  "as": "cluster_angle_rad"},
+        {"type": "formula", "expr": "cx + datum.cluster_dist * cos(datum.cluster_angle_rad)", "as": "cluster_cx"},
+        {"type": "formula", "expr": "cy + datum.cluster_dist * sin(datum.cluster_angle_rad)", "as": "cluster_cy"},
+        {"type": "formula", "expr": "(datum.cluster_idx - 1) * 2.4",                "as": "cluster_local_angle"},
+        {"type": "formula", "expr": "sqrt(datum.cluster_idx) * max(20, 38 - datum.cluster_size * 1.5)", "as": "cluster_local_radius"},
+        {"type": "formula", "expr": "datum.cluster_cx + datum.cluster_local_radius * cos(datum.cluster_local_angle)", "as": "cluster_x"},
+        {"type": "formula", "expr": "datum.cluster_cy + datum.cluster_local_radius * sin(datum.cluster_local_angle)", "as": "cluster_y"},
+        {"type": "formula", "expr": "(datum.global_idx - 1) * 2.4",                 "as": "global_angle"},
+        {"type": "formula", "expr": "min(450, sqrt(datum.global_idx) * max(30, 380 / sqrt(datum.global_count)) * zoomLevel)", "as": "global_radius"},
+        {"type": "formula", "expr": "cx + datum.global_radius * cos(datum.global_angle)", "as": "dist_x"},
+        {"type": "formula", "expr": "cy + datum.global_radius * sin(datum.global_angle)", "as": "dist_y"},
+        {"type": "formula", "expr": "(showArtists && !showProducers) ? datum.cluster_x : datum.dist_x", "as": "x"},
+        {"type": "formula", "expr": "(showArtists && !showProducers) ? datum.cluster_y : datum.dist_y", "as": "y"},
+        {"type": "formula", "expr": "pow(datum.career_total, 0.7) * 3 + 3",         "as": "node_size"},
+        {"type": "formula", "expr": "datum.node_size / 1.77",                       "as": "img_radius"},
+        {"type": "formula", "expr": "'images/' + replace(replace(replace(datum.name, ' ', '%20'), ' ', '%20'), ' ', '%20') + '.webp'", "as": "image_url"},
+        {"type": "formula", "expr": "searchTerm != ''",                              "as": "is_searching"},
+        {"type": "formula", "expr": "searchTerm != '' && indexof(lower(datum.name), lower(searchTerm)) >= 0", "as": "search_match"},
+        {"type": "formula", "expr": "datum.career_total >= 8 || datum.frequency == 'high' ? 1 : datum.career_total >= 4 || datum.frequency == 'medium' ? 0.7 : 0.4", "as": "label_opacity"},
+        {"type": "formula", "expr": "selectedFrequency == 'all' ? (datum.frequency == 'high' ? 1 : 0) : datum.label_opacity", "as": "label_visibility"}
+      ]
+    },
+    {
+      "name": "central_data",
+      "values": [{"name": "Travis Scott", "role": "central", "cluster": "Central", "career_total": 999, "color": "#32006e"}],
+      "transform": [
+        {"type": "formula", "expr": "cx", "as": "x"},
+        {"type": "formula", "expr": "cy", "as": "y"},
+        {"type": "formula", "expr": "55", "as": "node_size"}
+      ]
+    },
+    {
+      "name": "edges_drawn",
+      "source": "nodes_positioned",
+      "transform": [
+        {"type": "formula", "expr": "cx",      "as": "source_x"},
+        {"type": "formula", "expr": "cy",      "as": "source_y"},
+        {"type": "formula", "expr": "datum.x", "as": "target_x"},
+        {"type": "formula", "expr": "datum.y", "as": "target_y"},
+        {"type": "formula", "expr": "sqrt(datum.career_total) * 0.5 + 0.2", "as": "edge_width"},
+        {"type": "formula", "expr": "datum.is_searching ? (datum.search_match ? 0.85 : 0.02) : (hoveredNode != null && hoveredNode.node_key == datum.node_key ? 0.9 : hoveredNode != null ? 0.05 : (datum.career_total >= 5 ? 0.25 : 0.12))", "as": "edge_opacity"}
+      ]
+    },
+    {
+      "name": "image_nodes",
+      "source": "nodes_positioned",
+      "transform": [{"type": "filter", "expr": "datum.frequency == 'high' || datum.frequency == 'medium'"}]
+    },
+    {
+      "name": "artist_image_nodes",
+      "source": "image_nodes",
+      "transform": [{"type": "filter", "expr": "datum.role == 'artist'"}]
+    },
+    {
+      "name": "producer_image_nodes",
+      "source": "image_nodes",
+      "transform": [{"type": "filter", "expr": "datum.role == 'producer'"}]
+    },
+    {
+      "name": "active_clusters",
+      "source": "nodes_positioned",
+      "transform": [{"type": "aggregate", "groupby": ["cluster"], "ops": ["count"], "fields": ["cluster"], "as": ["node_count"]}]
+    },
+    {
+      "name": "active_cluster_labels",
+      "source": "cluster_layout",
+      "transform": [
+        {"type": "lookup", "from": "active_clusters", "key": "cluster", "fields": ["cluster"], "values": ["cluster", "node_count"], "as": ["is_active", "node_count"]},
+        {"type": "filter", "expr": "datum.is_active != null && datum.cluster !== 'Central' && datum.cluster !== 'Producer'"}
+      ]
+    }
+  ],
+
+  "marks": [
+    {
+      "type": "symbol", "name": "cluster_zones", "interactive": false,
+      "from": {"data": "active_cluster_labels"},
+      "encode": {
+        "update": {
+          "x": {"signal": "cx + datum.distance * zoomLevel * cos(datum.angle * PI / 180)"},
+          "y": {"signal": "cy + datum.distance * zoomLevel * sin(datum.angle * PI / 180)"},
+          "size": {"signal": "max(18000, (datum.node_count || 1) * 2800)"},
+          "shape": {"value": "circle"}, "fill": {"field": "color"},
+          "fillOpacity": {"signal": "(showArtists && !showProducers) ? (searchTerm != '' ? 0.01 : (hoveredNode != null ? 0.02 : 0.045)) : 0"},
+          "stroke": {"value": "transparent"}
+        }
+      }
+    },
+    {
+      "type": "symbol", "name": "central_glow_outer", "interactive": false,
+      "from": {"data": "central_data"},
+      "encode": {"enter": {"shape": {"value": "circle"}, "fill": {"value": "#32006e"}, "fillOpacity": {"value": 0.10}, "size": {"value": 22000}}, "update": {"x": {"field": "x"}, "y": {"field": "y"}}}
+    },
+    {
+      "type": "symbol", "name": "central_glow_inner", "interactive": false,
+      "from": {"data": "central_data"},
+      "encode": {"enter": {"shape": {"value": "circle"}, "fill": {"value": "#32006e"}, "fillOpacity": {"value": 0.16}, "size": {"value": 10000}}, "update": {"x": {"field": "x"}, "y": {"field": "y"}}}
+    },
+    {
+      "type": "rule", "name": "edges", "interactive": false,
+      "from": {"data": "edges_drawn"},
+      "encode": {
+        "enter": {"stroke": {"value": "#32006e"}},
+        "update": {"x": {"field": "source_x"}, "y": {"field": "source_y"}, "x2": {"field": "target_x"}, "y2": {"field": "target_y"}, "strokeOpacity": {"field": "edge_opacity"}, "strokeWidth": {"field": "edge_width"}}
+      }
+    },
+    {
+      "type": "text", "name": "cluster_labels", "interactive": false,
+      "from": {"data": "active_cluster_labels"},
+      "encode": {
+        "enter": {"fontFamily": {"value": "Arial, sans-serif"}, "fontSize": {"value": 8}, "fontWeight": {"value": "700"}, "letterSpacing": {"value": 2.5}, "align": {"value": "center"}, "baseline": {"value": "middle"}},
+        "update": {"x": {"signal": "cx + (datum.distance * zoomLevel + 80) * cos(datum.angle * PI / 180)"}, "y": {"signal": "cy + (datum.distance * zoomLevel + 80) * sin(datum.angle * PI / 180)"}, "text": {"signal": "upper(datum.cluster)"}, "fill": {"field": "color"}, "fillOpacity": {"signal": "(showArtists && !showProducers) ? (searchTerm != '' ? 0.06 : (hoveredNode != null ? 0.1 : 0.42)) : 0"}}
+      }
+    },
+    {
+      "type": "symbol", "name": "nodes",
+      "from": {"data": "nodes_positioned"},
+      "encode": {
+        "enter": {"strokeWidth": {"value": 1.2}},
+        "update": {
+          "x": {"field": "x"}, "y": {"field": "y"},
+          "size": {"signal": "datum.node_size * datum.node_size"},
+          "shape": {"signal": "datum.role == 'producer' ? 'square' : 'circle'"},
+          "fill": {"field": "color"}, "stroke": {"field": "color"},
+          "fillOpacity": {"signal": "datum.is_searching ? (datum.search_match ? 1 : 0.08) : (hoveredNode != null ? (hoveredNode.node_key == datum.node_key ? 1 : 0.11) : 0.82)"},
+          "strokeOpacity": {"signal": "datum.is_searching ? (datum.search_match ? 1 : 0.03) : (hoveredNode != null ? (hoveredNode.node_key == datum.node_key ? 1 : 0.05) : 0.48)"},
+          "cursor": {"value": "pointer"}
+        }
+      }
+    },
+
+    {
+      "type": "image", "name": "artist_node_images", "interactive": false,
+      "from": {"data": "artist_image_nodes"},
+      "encode": {
+        "enter": {"aspect": {"value": true}, "align": {"value": "center"}, "baseline": {"value": "middle"}},
+        "update": {
+          "url": {"field": "image_url"}, "x": {"field": "x"}, "y": {"field": "y"},
+          "width": {"signal": "datum.img_radius * 2"}, "height": {"signal": "datum.img_radius * 2"},
+          "opacity": {"signal": "datum.is_searching ? (datum.search_match ? 1 : 0.05) : (hoveredNode != null ? (hoveredNode.node_key == datum.node_key ? 1 : 0.08) : 0.92)"}
+        }
+      }
+    },
+    {
+      "type": "symbol", "name": "artist_node_borders", "interactive": false,
+      "from": {"data": "artist_image_nodes"},
+      "encode": {
+        "update": {
+          "x": {"field": "x"}, "y": {"field": "y"},
+          "size": {"signal": "datum.node_size * datum.node_size * 1.12"},
+          "shape": {"value": "circle"},
+          "fill": {"value": "transparent"}, "stroke": {"field": "color"}, "strokeWidth": {"value": 2.5},
+          "strokeOpacity": {"signal": "datum.is_searching ? (datum.search_match ? 1 : 0.03) : (hoveredNode != null ? (hoveredNode.node_key == datum.node_key ? 1 : 0.08) : 0.7)"}
+        }
+      }
+    },
+
+    {
+      "type": "image", "name": "producer_node_images", "interactive": false,
+      "from": {"data": "producer_image_nodes"},
+      "encode": {
+        "enter": {"aspect": {"value": true}, "align": {"value": "center"}, "baseline": {"value": "middle"}},
+        "update": {
+          "url": {"field": "image_url"}, "x": {"field": "x"}, "y": {"field": "y"},
+          "width": {"signal": "datum.img_radius * 2"}, "height": {"signal": "datum.img_radius * 2"},
+          "opacity": {"signal": "datum.is_searching ? (datum.search_match ? 1 : 0.05) : (hoveredNode != null ? (hoveredNode.node_key == datum.node_key ? 1 : 0.08) : 0.92)"}
+        }
+      }
+    },
+    {
+      "type": "symbol", "name": "producer_node_borders", "interactive": false,
+      "from": {"data": "producer_image_nodes"},
+      "encode": {
+        "update": {
+          "x": {"field": "x"}, "y": {"field": "y"},
+          "size": {"signal": "datum.node_size * datum.node_size * 1.6"},
+          "shape": {"value": "square"},
+          "fill": {"value": "transparent"}, "stroke": {"field": "color"}, "strokeWidth": {"value": 2},
+          "strokeOpacity": {"signal": "datum.is_searching ? (datum.search_match ? 1 : 0.03) : (hoveredNode != null ? (hoveredNode.node_key == datum.node_key ? 1 : 0.08) : 0.7)"}
+        }
+      }
+    },
+
+    {
+      "type": "text", "name": "node_labels", "interactive": false,
+      "from": {"data": "nodes_positioned"},
+      "encode": {
+        "enter": {"fontFamily": {"value": "Arial, sans-serif"}, "align": {"value": "center"}, "baseline": {"value": "bottom"}, "letterSpacing": {"value": 0.3}, "limit": {"value": 120}},
+        "update": {
+          "x": {"field": "x"}, "y": {"field": "y"},
+          "dy": {"signal": "-(datum.node_size / 1.77 + 6)"},
+          "text": {"field": "name"},
+          "fontSize": {"signal": "datum.career_total >= 10 ? 11 : datum.career_total >= 5 ? 9.5 : 8"},
+          "fontWeight": {"signal": "datum.career_total >= 8 ? '600' : '400'"},
+          "fill": {"value": "#1a1a1a"},
+          "fillOpacity": {"signal": "datum.is_searching ? (datum.search_match ? 1 : 0.02) : (hoveredNode != null ? (hoveredNode.node_key == datum.node_key ? 1 : 0.03) : datum.label_visibility)"}
+        }
+      }
+    },
+    {
+      "type": "text", "name": "role_labels", "interactive": false,
+      "from": {"data": "nodes_positioned"},
+      "encode": {
+        "enter": {"fontFamily": {"value": "Arial, sans-serif"}, "align": {"value": "center"}, "baseline": {"value": "top"}, "letterSpacing": {"value": 1.5}},
+        "update": {
+          "x": {"field": "x"}, "y": {"field": "y"},
+          "dy": {"signal": "datum.node_size / 1.77 + 6"},
+          "text": {"signal": "(datum.is_dual_role && showArtists && showProducers) ? '(' + upper(datum.role) + ')' : ''"},
+          "fontSize": {"value": 7}, "fontWeight": {"value": "600"}, "fill": {"value": "#5a5a5a"},
+          "fillOpacity": {"signal": "(!datum.is_dual_role || !showArtists || !showProducers) ? 0 : datum.is_searching ? (datum.search_match ? 0.7 : 0.01) : (hoveredNode != null ? (hoveredNode.node_key == datum.node_key ? 0.7 : 0.02) : datum.label_visibility * 0.65)"}
+        }
+      }
+    },
+
+    {
+      "type": "symbol", "name": "central_node",
+      "from": {"data": "central_data"},
+      "encode": {
+        "enter": {"shape": {"value": "circle"}, "fill": {"value": "#32006e"}, "stroke": {"value": "#c7bfa6"}, "strokeWidth": {"value": 2.5}, "fillOpacity": {"value": 1}},
+        "update": {"x": {"field": "x"}, "y": {"field": "y"}, "size": {"signal": "datum.node_size * datum.node_size"}}
+      }
+    },
+    {
+      "type": "image", "name": "central_image", "interactive": false,
+      "from": {"data": "central_data"},
+      "encode": {
+        "enter": {"aspect": {"value": true}, "align": {"value": "center"}, "baseline": {"value": "middle"}},
+        "update": {"url": {"value": "images/Travis%20Scott.webp"}, "x": {"field": "x"}, "y": {"field": "y"}, "width": {"signal": "datum.node_size / 1.77 * 2"}, "height": {"signal": "datum.node_size / 1.77 * 2"}, "opacity": {"value": 1}}
+      }
+    },
+    {
+      "type": "symbol", "name": "central_border", "interactive": false,
+      "from": {"data": "central_data"},
+      "encode": {
+        "update": {
+          "x": {"field": "x"}, "y": {"field": "y"},
+          "size": {"signal": "datum.node_size * datum.node_size * 1.12"},
+          "shape": {"value": "circle"},
+          "fill": {"value": "transparent"}, "stroke": {"value": "#32006e"}, "strokeWidth": {"value": 3}, "strokeOpacity": {"value": 0.9}
+        }
+      }
+    },
+    {
+      "type": "text", "name": "central_label", "interactive": false,
+      "from": {"data": "central_data"},
+      "encode": {
+        "enter": {"text": {"value": "TRAVIS SCOTT"}, "fontFamily": {"value": "Arial, sans-serif"}, "fontSize": {"value": 9.5}, "fontWeight": {"value": "700"}, "fill": {"value": "#32006e"}, "fillOpacity": {"value": 0.9}, "align": {"value": "center"}, "baseline": {"value": "bottom"}, "letterSpacing": {"value": 3}},
+        "update": {"x": {"field": "x"}, "y": {"field": "y"}, "dy": {"value": -40}}
+      }
+    }
+  ]
+}

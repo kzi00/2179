@@ -1,0 +1,141 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Top 14 most-streamed Travis Scott songs on Spotify, color-coded by parent album. Reveals which tracks accumulated the largest cultural footprint across his catalogue.",
+  "width": "container",
+  "height": 580,
+  "background": "#c7bfa6",
+  "padding": {"left": 40, "right": 60, "top": 30, "bottom": 30},
+  "data": {
+    "url": "data/top_songs.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.streams / 1000000000",
+      "as": "streams_billions"
+    },
+    {
+      "calculate": "datum.streams >= 1000000000 ? format(datum.streams / 1000000000, '.2f') + 'B' : format(datum.streams / 1000000, '.0f') + 'M'",
+      "as": "streams_label"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 2,
+        "height": {"band": 0.62}
+      },
+      "encoding": {
+        "y": {
+          "field": "song",
+          "type": "nominal",
+          "sort": "-x",
+          "axis": {
+            "title": null,
+            "labelFont": "Georgia",
+            "labelFontSize": 12,
+            "labelColor": "#2a2a2a",
+            "labelPadding": 12,
+            "labelLimit": 200,
+            "domain": false,
+            "ticks": false
+          }
+        },
+        "x": {
+          "field": "streams_billions",
+          "type": "quantitative",
+          "axis": {
+            "title": "Streams (billions)",
+            "titleFont": "Arial",
+            "titleFontSize": 10,
+            "titleFontWeight": 400,
+            "titleColor": "#7a7a7a",
+            "titlePadding": 16,
+            "labelFont": "Arial",
+            "labelFontSize": 10,
+            "labelColor": "#888",
+            "grid": true,
+            "gridColor": "#d4cfbf",
+            "gridOpacity": 0.5,
+            "domain": false,
+            "ticks": false,
+            "format": ".1f"
+          }
+        },
+        "color": {
+          "field": "album",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Astroworld",
+              "Utopia",
+              "Birds in the Trap Sing McKnight",
+              "Rodeo",
+              "Single"
+            ],
+            "range": [
+              "#c4a05c",
+              "#a85561",
+              "#5d7a9c",
+              "#8a6a4a",
+              "#8b7d9a"
+            ]
+          },
+          "legend": {
+            "title": "Parent Album",
+            "titleFont": "Arial",
+            "titleFontSize": 10,
+            "titleFontWeight": 600,
+            "titleColor": "#32006e",
+            "titlePadding": 12,
+            "labelFont": "Arial",
+            "labelFontSize": 10,
+            "labelColor": "#4a4a4a",
+            "orient": "bottom-right",
+            "direction": "vertical",
+            "offset": 24,
+            "padding": 12,
+            "symbolType": "square",
+            "symbolSize": 100,
+            "rowPadding": 6
+          }
+        },
+        "tooltip": [
+          {"field": "song", "type": "nominal", "title": "Track"},
+          {"field": "album", "type": "nominal", "title": "Album"},
+          {"field": "streams_label", "type": "nominal", "title": "Streams"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 8,
+        "font": "Arial",
+        "fontSize": 11,
+        "fontWeight": 600,
+        "color": "#32006e"
+      },
+      "encoding": {
+        "y": {
+          "field": "song",
+          "type": "nominal",
+          "sort": "-x"
+        },
+        "x": {
+          "field": "streams_billions",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "streams_label",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null}
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Travis Scott First-Week Album-Equivalent Units. Visualises commercial impact of each studio release and compilation across his career.",
+  "width": "container",
+  "height": 480,
+  "background": "#c7bfa6",
+  "padding": {"left": 40, "right": 40, "top": 60, "bottom": 100},
+  "data": {
+    "url": "data/first_week_sales.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.first_week_units / 1000",
+      "as": "units_thousands"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 2,
+        "width": {"band": 0.55}
+      },
+      "encoding": {
+        "x": {
+          "field": "album",
+          "type": "nominal",
+          "sort": null,
+          "axis": {
+            "labelAngle": 0,
+            "labelFont": "Georgia",
+            "labelFontSize": 11,
+            "labelColor": "#2a2a2a",
+            "labelLineHeight": 13,
+            "labelPadding": 12,
+            "labelExpr": "split(datum.value, '|')",
+            "title": null,
+            "domain": false,
+            "ticks": false
+          }
+        },
+        "y": {
+          "field": "units_thousands",
+          "type": "quantitative",
+          "axis": {
+            "title": "First-week album-equivalent units (thousands)",
+            "titleFont": "Arial",
+            "titleFontSize": 10,
+            "titleFontWeight": 400,
+            "titleColor": "#7a7a7a",
+            "titlePadding": 16,
+            "labelFont": "Arial",
+            "labelFontSize": 10,
+            "labelColor": "#888",
+            "grid": true,
+            "gridColor": "#d4cfbf",
+            "gridOpacity": 0.5,
+            "domain": false,
+            "ticks": false,
+            "format": "d"
+          }
+        },
+        "color": {"value": "#32006e"},
+        "opacity": {
+          "condition": {
+            "test": "datum.is_highlight === 'true' || datum.is_highlight === true",
+            "value": 1.0
+          },
+          "value": 0.55
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "dy": -8,
+        "font": "Arial",
+        "fontSize": 10,
+        "fontWeight": 600,
+        "color": "#32006e"
+      },
+      "encoding": {
+        "x": {
+          "field": "album",
+          "type": "nominal",
+          "sort": null
+        },
+        "y": {
+          "field": "units_thousands",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "units_thousands",
+          "type": "quantitative",
+          "format": ".0f"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null}
+  }
+}

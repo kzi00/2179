@@ -1,0 +1,385 @@
+﻿main,collaborator,role,collaboration_count,year,frequency
+Travis Scott,Kanye West,artist,1,2015,medium
+Travis Scott,Kanye West,artist,1,2016,medium
+Travis Scott,Kanye West,artist,1,2018,medium
+Travis Scott,Kanye West,producer,1,2013,medium
+Travis Scott,Kanye West,producer,1,2015,medium
+Travis Scott,Kanye West,producer,1,2016,medium
+Travis Scott,Kanye West,producer,2,2023,medium
+Travis Scott,Toro y Moi,artist,1,2013,low
+Travis Scott,Toro y Moi,artist,1,2015,low
+Travis Scott,Toro y Moi,producer,1,2013,low
+Travis Scott,Meek Mill,artist,1,2013,low
+Travis Scott,T.I.,artist,1,2013,low
+Travis Scott,T.I.,artist,1,2014,low
+Travis Scott,A$AP Ferg,artist,1,2013,low
+Travis Scott,Popcaan,artist,1,2013,low
+Travis Scott,Justin Vernon,artist,1,2013,low
+Travis Scott,Justin Vernon,artist,1,2023,low
+Travis Scott,Theophilus London,artist,1,2013,low
+Travis Scott,Paul Wall,artist,1,2013,low
+Travis Scott,James Fauntleroy,artist,1,2013,low
+Travis Scott,Wale,artist,1,2013,low
+Travis Scott,Anthony Kilhoffer,producer,3,2013,medium
+Travis Scott,Anthony Kilhoffer,producer,1,2014,medium
+Travis Scott,Anthony Kilhoffer,producer,1,2025,medium
+Travis Scott,Emile Haynie,producer,1,2013,low
+Travis Scott,J Gramm,producer,4,2013,medium
+Travis Scott,J Gramm,producer,1,2016,medium
+Travis Scott,WondaGurl,producer,1,2013,high
+Travis Scott,WondaGurl,producer,1,2014,high
+Travis Scott,WondaGurl,producer,2,2015,high
+Travis Scott,WondaGurl,producer,1,2016,high
+Travis Scott,WondaGurl,producer,2,2018,high
+Travis Scott,WondaGurl,producer,2,2019,high
+Travis Scott,WondaGurl,producer,1,2020,high
+Travis Scott,WondaGurl,producer,6,2023,high
+Travis Scott,Rey Reel,producer,1,2013,low
+Travis Scott,Rahki,producer,1,2013,low
+Travis Scott,Dahi,producer,1,2013,low
+Travis Scott,Dahi,producer,1,2014,low
+Travis Scott,Dahi,producer,1,2015,low
+Travis Scott,Young Chop,producer,1,2013,low
+Travis Scott,MIKE DEAN,producer,3,2013,high
+Travis Scott,MIKE DEAN,producer,12,2014,high
+Travis Scott,MIKE DEAN,producer,9,2015,high
+Travis Scott,MIKE DEAN,producer,7,2016,high
+Travis Scott,MIKE DEAN,producer,3,2017,high
+Travis Scott,MIKE DEAN,producer,11,2018,high
+Travis Scott,MIKE DEAN,producer,3,2019,high
+Travis Scott,MIKE DEAN,producer,1,2020,high
+Travis Scott,MIKE DEAN,producer,4,2023,high
+Travis Scott,Rick Rubin,producer,1,2013,low
+Travis Scott,Lex Luger,producer,1,2013,low
+Travis Scott,Lex Luger,producer,2,2014,low
+Travis Scott,Lex Luger,producer,1,2016,low
+Travis Scott,No I.D.,producer,1,2013,low
+Travis Scott,Ann Marie Calhoun,producer,1,2013,low
+Travis Scott,SAK PASE,producer,1,2013,low
+Travis Scott,The Dope Boyz,producer,1,2013,low
+Travis Scott,Rich Homie Quan,artist,1,2014,low
+Travis Scott,Young Thug,artist,2,2014,high
+Travis Scott,Young Thug,artist,1,2015,high
+Travis Scott,Young Thug,artist,1,2016,high
+Travis Scott,Young Thug,artist,1,2019,high
+Travis Scott,Young Thug,artist,1,2020,high
+Travis Scott,Young Thug,artist,1,2023,high
+Travis Scott,Metro Boomin,producer,4,2014,high
+Travis Scott,Metro Boomin,producer,4,2015,high
+Travis Scott,Metro Boomin,producer,1,2023,high
+Travis Scott,Metro Boomin,producer,2,2025,high
+Travis Scott,Southside,producer,1,2014,low
+Travis Scott,Southside,producer,1,2015,low
+Travis Scott,Southside,producer,2,2017,low
+Travis Scott,AudioKlique,producer,1,2014,low
+Travis Scott,C Gutta,producer,1,2014,low
+Travis Scott,FKi 1st,producer,1,2014,low
+Travis Scott,FKi 1st,producer,2,2018,low
+Travis Scott,Charlie Handsome,producer,1,2014,low
+Travis Scott,Big Sean,artist,1,2014,low
+Travis Scott,Big Sean,artist,1,2016,low
+Travis Scott,The 1975,artist,1,2014,low
+Travis Scott,Vinylz,producer,1,2014,medium
+Travis Scott,Vinylz,producer,4,2016,medium
+Travis Scott,Vinylz,producer,3,2017,medium
+Travis Scott,Vinylz,producer,1,2023,medium
+Travis Scott,Allen Ritter,producer,1,2014,high
+Travis Scott,Allen Ritter,producer,10,2015,high
+Travis Scott,Allen Ritter,producer,4,2016,high
+Travis Scott,Allen Ritter,producer,2,2017,high
+Travis Scott,Allen Ritter,producer,2,2018,high
+Travis Scott,Allen Ritter,producer,3,2023,high
+Travis Scott,Migos,artist,1,2014,low
+Travis Scott,Peewee Longway,artist,1,2014,low
+Travis Scott,FKi,producer,1,2014,low
+Travis Scott,FKi,producer,1,2015,low
+Travis Scott,OZ,producer,1,2014,high
+Travis Scott,OZ,producer,2,2016,high
+Travis Scott,OZ,producer,1,2017,high
+Travis Scott,OZ,producer,1,2018,high
+Travis Scott,OZ,producer,2,2019,high
+Travis Scott,OZ,producer,1,2021,high
+Travis Scott,OZ,producer,1,2023,high
+Travis Scott,OZ,producer,1,2025,high
+Travis Scott,Syk Sense,producer,1,2014,low
+Travis Scott,J. Hill,producer,1,2014,low
+Travis Scott,Tane Runo,producer,1,2014,low
+Travis Scott,Sonny Digital,producer,1,2015,low
+Travis Scott,Sonny Digital,producer,1,2018,low
+Travis Scott,Quavo,artist,1,2015,high
+Travis Scott,Quavo,artist,2,2016,high
+Travis Scott,Quavo,artist,14,2017,high
+Travis Scott,Quavo,artist,1,2018,high
+Travis Scott,Ging,producer,2,2015,medium
+Travis Scott,Ging,producer,2,2016,medium
+Travis Scott,Ging,producer,1,2017,medium
+Travis Scott,Ging,producer,3,2018,medium
+Travis Scott,Future,artist,1,2015,medium
+Travis Scott,Future,artist,1,2023,medium
+Travis Scott,Future,artist,1,2025,medium
+Travis Scott,2 Chainz,artist,1,2013,medium
+Travis Scott,2 Chainz,artist,1,2015,medium
+Travis Scott,2 Chainz,artist,1,2016,medium
+Travis Scott,Mano,producer,1,2015,low
+Travis Scott,Zaytoven,producer,1,2015,low
+Travis Scott,Juicy J,artist,1,2015,low
+Travis Scott,Kacy Hill,artist,1,2015,low
+Travis Scott,The Weeknd,artist,1,2015,high
+Travis Scott,The Weeknd,artist,1,2016,high
+Travis Scott,The Weeknd,artist,2,2018,high
+Travis Scott,The Weeknd,artist,1,2019,high
+Travis Scott,The Weeknd,artist,2,2023,high
+Travis Scott,The Weeknd,producer,1,2015,low
+Travis Scott,The Weeknd,producer,1,2019,low
+Travis Scott,Ben Billions,producer,1,2015,low
+Travis Scott,Illangelo,producer,1,2015,low
+Travis Scott,Illangelo,producer,1,2023,low
+Travis Scott,Chief Keef,artist,1,2015,low
+Travis Scott,Swae Lee,artist,1,2015,medium
+Travis Scott,Swae Lee,artist,1,2018,medium
+Travis Scott,Swae Lee,artist,1,2023,medium
+Travis Scott,TM88,producer,1,2015,medium
+Travis Scott,TM88,producer,2,2016,medium
+Travis Scott,TM88,producer,1,2017,medium
+Travis Scott,TM88,producer,1,2018,medium
+Travis Scott,TM88,producer,1,2019,medium
+Travis Scott,TM88,producer,1,2025,medium
+Travis Scott,Charlie Heat,producer,1,2015,low
+Travis Scott,Charlie Heat,producer,1,2016,low
+Travis Scott,DK the Drummer,producer,1,2015,low
+Travis Scott,Noah Goldstein,producer,1,2015,medium
+Travis Scott,Noah Goldstein,producer,1,2016,medium
+Travis Scott,Noah Goldstein,producer,4,2023,medium
+Travis Scott,Eestbound,producer,1,2015,low
+Travis Scott,Justin Bieber,artist,1,2015,low
+Travis Scott,Maneesh,producer,1,2015,low
+Travis Scott,Pharrell Williams,artist,1,2018,low
+Travis Scott,Pharrell Williams,artist,1,2022,low
+Travis Scott,Pharrell Williams,producer,1,2015,low
+Travis Scott,Pharrell Williams,producer,1,2022,low
+Travis Scott,Pharrell Williams,producer,1,2023,low
+Travis Scott,1500 or Nothin,producer,1,2015,low
+Travis Scott,Terrace Martin,producer,1,2015,low
+Travis Scott,ScHoolboy Q,artist,1,2015,low
+Travis Scott,Andre 3000,artist,1,2015,low
+Travis Scott,Evian Christ,producer,1,2015,low
+Travis Scott,Daxz,producer,1,2015,low
+Travis Scott,Hit-Boy,producer,1,2016,low
+Travis Scott,Hit-Boy,producer,2,2018,low
+Travis Scott,Hit-Boy,producer,1,2023,low
+Travis Scott,Honorable C.N.O.T.E.,producer,1,2015,low
+Travis Scott,Cashmere Cat,producer,1,2015,low
+Travis Scott,Roget Chahayed,producer,1,2016,low
+Travis Scott,Roget Chahayed,producer,2,2018,low
+Travis Scott,CuBeatz,producer,6,2016,high
+Travis Scott,CuBeatz,producer,3,2017,high
+Travis Scott,CuBeatz,producer,3,2018,high
+Travis Scott,Kid Cudi,artist,1,2015,medium
+Travis Scott,Kid Cudi,artist,1,2018,medium
+Travis Scott,Kid Cudi,artist,1,2020,medium
+Travis Scott,Kid Cudi,artist,1,2023,medium
+Travis Scott,Cardo Got Wings,producer,2,2016,medium
+Travis Scott,Cardo Got Wings,producer,1,2017,medium
+Travis Scott,Cardo Got Wings,producer,1,2018,medium
+Travis Scott,Cardo Got Wings,producer,2,2025,medium
+Travis Scott,NAV,artist,1,2015,low
+Travis Scott,NAV,artist,1,2018,low
+Travis Scott,NAV,producer,1,2015,low
+Travis Scott,Ricci Riera,producer,1,2015,low
+Travis Scott,Murda Beatz,producer,2,2016,medium
+Travis Scott,Murda Beatz,producer,4,2017,medium
+Travis Scott,Murda Beatz,producer,1,2018,medium
+Travis Scott,21 Savage,artist,1,2016,high
+Travis Scott,21 Savage,artist,1,2018,high
+Travis Scott,21 Savage,artist,2,2023,high
+Travis Scott,21 Savage,artist,1,2025,high
+Travis Scott,NisiOnTheTrack,producer,1,2015,low
+Travis Scott,Kendrick Lamar,artist,1,2015,low
+Travis Scott,Yung Exclusive,producer,1,2015,low
+Travis Scott,Bryson Tiller,artist,1,2015,low
+Travis Scott,Sy Ari da Kid,producer,1,2015,low
+Travis Scott,TEAUXNY,producer,1,2015,low
+Travis Scott,Mel & Mus,producer,1,2015,low
+Travis Scott,Illa Jones,producer,1,2015,low
+Travis Scott,dF,producer,1,2015,low
+Travis Scott,Boi-1da,producer,1,2016,medium
+Travis Scott,Boi-1da,producer,1,2018,medium
+Travis Scott,Boi-1da,producer,3,2023,medium
+Travis Scott,T-Minus,producer,1,2015,low
+Travis Scott,T-Minus,producer,1,2025,low
+Travis Scott,DJ Mustard,producer,1,2016,low
+Travis Scott,Free Schoool,producer,1,2016,low
+Travis Scott,Gucci Mane,artist,1,2016,low
+Travis Scott,Yo Gotti,artist,1,2016,low
+Travis Scott,Desiigner,artist,1,2016,low
+Travis Scott,A-Trak,producer,1,2016,low
+Travis Scott,Fonzworth Bentley,producer,1,2016,low
+Travis Scott,Buddah Bless,producer,2,2017,low
+Travis Scott,Buddah Bless,producer,1,2019,low
+Travis Scott,DY Krazy,producer,1,2017,low
+Travis Scott,Takeoff,artist,1,2017,low
+Travis Scott,Takeoff,artist,1,2018,low
+Travis Scott,Felix Leone,producer,1,2017,low
+Travis Scott,Felix Leone,producer,1,2018,low
+Travis Scott,Supah Mario,producer,1,2017,low
+Travis Scott,!llmind,producer,2,2017,low
+Travis Scott,Offset,artist,1,2017,low
+Travis Scott,Yung Lean,artist,1,2023,low
+Travis Scott,Yung Lean,producer,1,2017,low
+Travis Scott,Gud,producer,1,2017,low
+Travis Scott,Pas Beatz,producer,1,2017,low
+Travis Scott,Yipsy,producer,1,2017,low
+Travis Scott,Wheezy,producer,1,2017,low
+Travis Scott,Wheezy,producer,2,2023,low
+Travis Scott,C4Bombs,producer,1,2017,low
+Travis Scott,Dun Deal,producer,1,2017,low
+Travis Scott,Lil Uzi Vert,artist,1,2016,low
+Travis Scott,Lil Uzi Vert,artist,1,2017,low
+Travis Scott,Lil Uzi Vert,artist,1,2018,low
+Travis Scott,The Featherstones,producer,1,2017,low
+Travis Scott,Breyan Isaac,producer,1,2017,low
+Travis Scott,30 Roc,producer,2,2018,low
+Travis Scott,30 Roc,producer,1,2023,low
+Travis Scott,BWheezy,producer,1,2018,low
+Travis Scott,CA$HPASSION,producer,1,2018,low
+Travis Scott,Bkorn,producer,1,2018,low
+Travis Scott,Frank Ocean,artist,1,2018,low
+Travis Scott,Drake,artist,1,2018,low
+Travis Scott,Drake,artist,1,2023,low
+Travis Scott,Tay Keith,producer,1,2018,low
+Travis Scott,Tay Keith,producer,1,2023,low
+Travis Scott,Tay Keith,producer,2,2025,low
+Travis Scott,MD Beatz,producer,1,2018,low
+Travis Scott,Blair Taylor,producer,1,2018,low
+Travis Scott,James Blake,artist,1,2018,low
+Travis Scott,James Blake,artist,1,2023,low
+Travis Scott,James Blake,producer,3,2023,low
+Travis Scott,Philip Bailey,artist,1,2018,low
+Travis Scott,Stevie Wonder,producer,1,2018,low
+Travis Scott,JBeatzz,producer,1,2018,low
+Travis Scott,Juice WRLD,artist,1,2018,low
+Travis Scott,Sheck Wes,artist,1,2018,high
+Travis Scott,Sheck Wes,artist,1,2019,high
+Travis Scott,Sheck Wes,artist,3,2025,high
+Travis Scott,Gezin,producer,1,2018,low
+Travis Scott,Young Larry David,producer,1,2018,low
+Travis Scott,Tame Impala,artist,1,2018,low
+Travis Scott,Tame Impala,producer,1,2018,low
+Travis Scott,John Mayer,producer,2,2018,low
+Travis Scott,John Mayer,producer,1,2023,low
+Travis Scott,Sevn Thomas,producer,2,2018,low
+Travis Scott,Sevn Thomas,producer,1,2023,low
+Travis Scott,Wallis Lane,producer,2,2018,low
+Travis Scott,Wallis Lane,producer,1,2023,low
+Travis Scott,Thundercat,producer,1,2018,low
+Travis Scott,Vegyn,producer,1,2018,medium
+Travis Scott,Vegyn,producer,2,2023,medium
+Travis Scott,Vegyn,producer,2,2025,medium
+Travis Scott,Matthew Tavares,producer,1,2018,low
+Travis Scott,River Tiber,producer,1,2018,low
+Travis Scott,Gunna,artist,1,2018,low
+Travis Scott,Turbo,producer,1,2018,low
+Travis Scott,June The Genius,producer,1,2018,low
+Travis Scott,RamyOnTheBeat,producer,1,2018,low
+Travis Scott,SheldonFerguson,producer,1,2018,low
+Travis Scott,Don Toliver,artist,1,2018,high
+Travis Scott,Don Toliver,artist,2,2019,high
+Travis Scott,Don Toliver,artist,2,2025,high
+Travis Scott,London Cyr,producer,1,2018,low
+Travis Scott,London Cyr,producer,1,2019,low
+Travis Scott,Nineteen85,producer,1,2018,low
+Travis Scott,Tim Suby,producer,1,2018,low
+Travis Scott,Pi'erre Bourne,producer,1,2018,low
+Travis Scott,SZA,artist,1,2019,low
+Travis Scott,SZA,artist,1,2023,low
+Travis Scott,DaHeala,producer,1,2019,low
+Travis Scott,Ricky Reed,producer,1,2019,low
+Travis Scott,Nik D,producer,2,2019,low
+Travis Scott,Nik D,producer,1,2021,low
+Travis Scott,Lil Baby,artist,1,2019,low
+Travis Scott,ROSALIA,artist,1,2019,low
+Travis Scott,ROSALIA,artist,1,2020,low
+Travis Scott,ROSALIA,producer,1,2020,low
+Travis Scott,Ugur Tig,producer,1,2019,low
+Travis Scott,Luxury Tax,artist,1,2019,low
+Travis Scott,Jabz,producer,1,2019,low
+Travis Scott,Jenius Level,producer,1,2019,low
+Travis Scott,Early Yellow,producer,1,2019,low
+Travis Scott,Sarah Schachner,producer,1,2019,low
+Travis Scott,Pop Smoke,artist,1,2019,low
+Travis Scott,AXL Beats,producer,1,2019,low
+Travis Scott,808 Melo,producer,1,2019,low
+Travis Scott,Dot Da Genius,producer,1,2020,low
+Travis Scott,Plain Pat,producer,1,2020,low
+Travis Scott,Take a Daytrip,producer,1,2020,low
+Travis Scott,El Guincho,producer,1,2020,low
+Travis Scott,DJ Nelson,producer,1,2020,low
+Travis Scott,Alejandro Armes,producer,1,2020,low
+Travis Scott,Ludwig Goransson,producer,1,2020,low
+Travis Scott,M.I.A.,artist,1,2020,low
+Travis Scott,CHASE B,producer,1,2020,low
+Travis Scott,Teddy Walton,producer,1,2020,low
+Travis Scott,Jahaan Sweet,producer,1,2021,high
+Travis Scott,Jahaan Sweet,producer,10,2023,high
+Travis Scott,Jahaan Sweet,producer,2,2025,high
+Travis Scott,FNZ,producer,1,2023,low
+Travis Scott,FNZ,producer,1,2025,low
+Travis Scott,BoogzDaBeast,producer,2,2023,low
+Travis Scott,Teezo Touchdown,artist,1,2023,low
+Travis Scott,Guy-Manuel de Homem-Christo,producer,1,2023,low
+Travis Scott,Buddy Ross,producer,5,2023,medium
+Travis Scott,Dez Wright,producer,2,2023,low
+Travis Scott,BNYX,producer,3,2023,low
+Travis Scott,BNYX,producer,1,2025,low
+Travis Scott,Psymun,producer,1,2023,low
+Travis Scott,E.Vax,producer,1,2023,low
+Travis Scott,Coleman,producer,3,2023,low
+Travis Scott,Playboi Carti,artist,1,2023,low
+Travis Scott,Playboi Carti,artist,1,2025,low
+Travis Scott,Beyonce,artist,1,2023,low
+Travis Scott,Beyonce,producer,1,2023,low
+Travis Scott,206DEREK,producer,1,2023,low
+Travis Scott,Rob49,artist,1,2023,low
+Travis Scott,Hoops,producer,1,2023,low
+Travis Scott,Cadenza,producer,1,2023,low
+Travis Scott,Dave Chappelle,artist,1,2023,low
+Travis Scott,Nik Dean,producer,1,2023,low
+Travis Scott,Nami,producer,1,2023,low
+Travis Scott,Slim Pharaoh,producer,1,2023,low
+Travis Scott,Travis Sayles,producer,1,2023,low
+Travis Scott,Westside Gunn,artist,1,2023,low
+Travis Scott,The Alchemist,producer,1,2023,low
+Travis Scott,Dom Maker,producer,1,2023,low
+Travis Scott,Elliot Baker,producer,1,2023,low
+Travis Scott,Bad Bunny,artist,1,2023,low
+Travis Scott,DVLP,producer,1,2023,low
+Travis Scott,Hudson Mohawke,producer,1,2023,low
+Travis Scott,Nabeyin,producer,1,2023,low
+Travis Scott,Bun B,artist,2,2025,low
+Travis Scott,Waka Flocka Flame,artist,1,2025,low
+Travis Scott,BBYKOBE,producer,3,2025,low
+Travis Scott,Kesh,producer,1,2025,low
+Travis Scott,Mcevoy,producer,1,2025,low
+Travis Scott,Johnny Juliano,producer,1,2025,low
+Travis Scott,Sean Momberger,producer,1,2025,low
+Travis Scott,Dilip,producer,3,2025,low
+Travis Scott,Otxhello,producer,1,2025,low
+Travis Scott,SoFaygo,artist,1,2025,low
+Travis Scott,Blake$ale,producer,1,2025,low
+Travis Scott,prodluke,producer,1,2025,low
+Travis Scott,AM,producer,1,2025,low
+Travis Scott,F1LTHY,producer,1,2025,low
+Travis Scott,Glasear,producer,1,2025,low
+Travis Scott,SahBabii,artist,1,2025,low
+Travis Scott,Ace G,producer,1,2025,low
+Travis Scott,Berg,producer,1,2025,low
+Travis Scott,Tyla,artist,1,2025,low
+Travis Scott,Vybz Kartel,artist,1,2025,low
+Travis Scott,GloRilla,artist,1,2025,low
+Travis Scott,AJ Williams,producer,1,2025,low
+Travis Scott,ARPXX,producer,1,2025,low
+Travis Scott,YoungBoy Never Broke Again,artist,1,2025,low
+Travis Scott,Kodak Black,artist,1,2025,low
+Travis Scott,CAMEone,producer,1,2025,low
+Travis Scott,LVUSM,producer,1,2025,low
+Travis Scott,DJ Moon,producer,1,2025,low

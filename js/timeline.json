@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Travis Scott Discography Timeline",
+  "width": "container",
+  "height": 320,
+  "background": "#c7bfa6",
+  "padding": {"left": 80, "right": 80, "top": 0, "bottom": 0},
+  "data": {
+    "values": [
+      {"start": "2012-09-01", "end": "2026-04-01"}
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#32006e",
+        "strokeWidth": 1.5,
+        "opacity": 0.85,
+        "strokeCap": "round"
+      },
+      "encoding": {
+        "x": {
+          "field": "start",
+          "type": "temporal",
+          "axis": null,
+          "scale": {
+            "domain": ["2012-09-01", "2026-04-01"],
+            "nice": false
+          }
+        },
+        "x2": {"field": "end"},
+        "y": {"value": 160}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null}
+  }
+}
