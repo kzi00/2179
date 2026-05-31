@@ -67,6 +67,11 @@
           }
         },
         "color": {"value": "#32006e"},
+        "tooltip": [
+          {"field": "album", "type": "nominal", "title": "Album"},
+          {"field": "first_week_units", "type": "quantitative", "title": "First-Week Sales", "format": ","},
+          {"field": "year", "type": "ordinal", "title": "Release Year"}
+        ],
         "opacity": {
           "condition": {
             "test": "datum.is_highlight === 'true' || datum.is_highlight === true",
@@ -101,7 +106,12 @@
           "field": "units_thousands",
           "type": "quantitative",
           "format": ".0f"
-        }
+        },
+        "tooltip": [
+          {"field": "album", "type": "nominal", "title": "Album"},
+          {"field": "first_week_units", "type": "quantitative", "title": "First-Week Sales", "format": ","},
+          {"field": "year", "type": "ordinal", "title": "Release Year"}
+        ]
       }
     }
   ],

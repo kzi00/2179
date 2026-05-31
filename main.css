@@ -26,7 +26,10 @@ body {
 .ambient-background {
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
   z-index: -1; overflow: hidden;
-  background: linear-gradient(180deg, #ada29a 0%, #7d7168 100%);
+  /* Base vertical gradient with a subtle darker vignette on the right */
+  background:
+    radial-gradient(ellipse at 90% 50%, rgba(20,12,22,0.26) 0%, rgba(20,12,22,0.14) 70%, rgba(20,12,22,0) 100%),
+    linear-gradient(180deg, #ada29a 0%, #7d7168 100%);
   pointer-events: none;
 }
 
@@ -377,6 +380,378 @@ body {
   }
 }
 .chart, .map-chart { width: 100%; min-height: clamp(300px, 45vh, 420px); }
+
+.map-frame {
+  overflow: hidden;
+}
+
+.australia-callout {
+  position: absolute;
+  right: 5px;
+  bottom: 150px;
+  width: 200px;
+  height: 118px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.australia-tours {
+  position: absolute;
+  right: 5px;
+  bottom: 120px;
+  width: 200px;
+  height: 118px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.australia-tours-callout-line {
+  position: absolute;
+  left: -50px;
+  top: -20px;
+  width: 75px;
+  height: 2px;
+  background: rgba(50, 0, 110, 0.42);
+  transform: rotate(110deg);
+  transform-origin: right top;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.18);
+}
+
+.australia-tours-box {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  max-width: 240px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 18px var(--glass-shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  line-height: 1.34;
+  color: #3b312d;
+  font-weight: 600;
+}
+
+/* United States callout for Graph 8 */
+.us-tours {
+  position: absolute;
+  left: 60px;
+  bottom: 40px;
+  width: 260px;
+  height: 116px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.us-tours-callout-line {
+  position: absolute;
+  left: 20px;
+  top: 0;
+  width: 120px;
+  height: 2px;
+  background: rgba(50, 0, 110, 0.42);
+  transform: rotate(-18deg);
+  transform-origin: left top;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.18);
+}
+
+.us-tours-box {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  max-width: 260px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 18px var(--glass-shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  line-height: 1.34;
+  color: #3b312d;
+  font-weight: 600;
+}
+
+.australia-callout-line {
+  position: absolute;
+  left: -63px;
+  top: -20px;
+  width: 80px;
+  height: 2px;
+  background: rgba(50, 0, 110, 0.42);
+  transform: rotate(105deg);
+  transform-origin: right top;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.18);
+}
+
+.australia-callout-box {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  max-width: 240px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 18px var(--glass-shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  line-height: 1.34;
+  color: #3b312d;
+  font-weight: 600;
+}
+
+.circus-maximus-callout {
+  position: absolute;
+  right: 54px;
+  top: 320px;
+  width: 280px;
+  height: 124px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.circus-maximus-callout-line {
+  position: absolute;
+  left: 50px;
+  top: 0;
+  width: 145px;
+  height: 2px;
+  background: rgba(50, 0, 110, 0.42);
+  transform: rotate(80deg);
+  transform-origin: right top;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.18);
+}
+
+.circus-maximus-callout-box {
+  position: absolute;
+  right: 0;
+  top: 0;
+  max-width: 280px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 18px var(--glass-shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  line-height: 1.34;
+  color: #3b312d;
+  font-weight: 600;
+}
+
+.starboy-callout {
+  position: absolute;
+  left: 200px;
+  top: 220px;
+  width: 210px;
+  height: 92px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.starboy-callout-line {
+  position: absolute;
+  left: 145px;
+  top: calc(100% - 10px);
+  width: 95px;
+  height: 2px;
+  background: rgba(50, 0, 110, 0.42);
+  transform: rotate(45deg);
+  transform-origin: left top;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.18);
+}
+
+.starboy-callout-box {
+  position: absolute;
+  left: 0;
+  top: 0;
+  max-width: 210px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 18px var(--glass-shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  line-height: 1.28;
+  color: #3b312d;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .australia-callout {
+    right: 12px;
+    bottom: 118px;
+    width: 196px;
+    height: 108px;
+  }
+
+  .australia-callout-line {
+    left: -122px;
+    top: 0;
+    width: 124px;
+    transform: rotate(105deg);
+    transform-origin: right top;
+  }
+
+  .australia-tours-callout-line {
+    left: -122px;
+    top: 0;
+    width: 124px;
+    transform: rotate(105deg);
+    transform-origin: right top;
+  }
+
+  .australia-callout-box {
+    max-width: 196px;
+    font-size: 10px;
+  }
+
+  /* Mobile override for Graph 8 callout */
+  .australia-tours {
+    right: 12px;
+    bottom: 118px;
+    width: 196px;
+    height: 108px;
+  }
+
+  .circus-maximus-callout {
+    right: 12px;
+    top: 286px;
+    width: 226px;
+    height: 116px;
+  }
+
+  .circus-maximus-callout-line {
+    left: -126px;
+    top: 0;
+    width: 136px;
+    transform: rotate(-42deg);
+    transform-origin: right top;
+  }
+
+  .circus-maximus-callout-box {
+    max-width: 226px;
+    font-size: 10px;
+  }
+
+  .starboy-callout {
+    left: 120px;
+    top: 118px;
+    width: 178px;
+    height: 88px;
+  }
+
+  .starboy-callout-line {
+    left: 78px;
+    top: calc(100% - 1px);
+    width: 108px;
+    transform: rotate(130deg);
+    transform-origin: left top;
+  }
+
+  .starboy-callout-box {
+    max-width: 178px;
+    font-size: 9px;
+  }
+
+  /* Mobile override for US callout */
+  .us-tours {
+    left: 14px;
+    bottom: 88px;
+    width: 196px;
+    height: 108px;
+  }
+
+  .us-tours-callout-line {
+    left: 12px;
+    top: 0;
+    width: 108px;
+    transform: rotate(-18deg);
+    transform-origin: left top;
+  }
+
+  .us-tours-box {
+    max-width: 196px;
+    font-size: 10px;
+  }
+}
+
+.astroworld-callout {
+  position: absolute;
+  left: 680px; 
+  top: 530px;
+  width: 210px;
+  height: 92px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.astroworld-callout-line {
+  position: absolute;
+  left: 50px;
+  top: 0;
+  width: 110px;
+  height: 2px;
+  background: rgba(50, 0, 110, 0.42);
+  transform: rotate(-140deg);
+  transform-origin: left top;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.18);
+}
+
+.astroworld-callout-box {
+  position: absolute;
+  left: 0;
+  top: 0;
+  max-width: 210px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 18px var(--glass-shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  line-height: 1.28;
+  color: #3b312d;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .astroworld-callout {
+    left: 260px;
+    top: 120px;
+    width: 178px;
+    height: 88px;
+  }
+
+  .astroworld-callout-line {
+    left: 78px;
+    top: 0;
+    width: 108px;
+    transform: rotate(153deg);
+    transform-origin: left top;
+  }
+
+  .astroworld-callout-box {
+    max-width: 178px;
+    font-size: 9px;
+  }
+}
 
 /* Revenue Sankey specific styles */
 .revenue-frame .chart { min-height: 520px; }
