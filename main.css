@@ -148,6 +148,12 @@ body {
 }
 .chapter-title { font-size: clamp(28px, 4vw, 40px); color: var(--primary); font-weight: 400; font-style: italic; letter-spacing: -0.5px; line-height: 1.15; }
 .chapter-description { font-size: clamp(15px, 2vw, 17px); max-width: 620px; line-height: 1.7; margin-bottom: 32px; margin-left: clamp(10px, 2vw, 30px); }
+.first-week-description {
+  max-width: 760px;
+  width: calc(100% - 120px);
+  margin-left: 28px;
+  margin-right: 0;
+}
 .network-chapter .chapter-description {
   max-width: 740px;
   width: calc(100% - 220px);
