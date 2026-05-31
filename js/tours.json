@@ -4,7 +4,8 @@
   "width": "container",
   "height": 530,
   "padding": {"top": 60, "bottom": 40, "left": 20, "right": 30},
-  "background": "#c7bfa6",
+  "background": "rgba(176, 169, 153, 0.65)",
+  "border": "1px solid rgba(255, 255, 255, 0.2)",
   "config": {
     "font": "Georgia, 'Times New Roman', serif",
     "title": {
@@ -13,10 +14,10 @@
       "color": "#2a2a2a"
     },
     "axis": {
-      "labelFont": "Georgia, 'Times New Roman', serif",
-      "titleFont": "Georgia, 'Times New Roman', serif",
+      "labelFont": "Arial",
+      "titleFont": "Arial",
       "labelColor": "#4a4540",
-      "titleColor": "#2a2a2a",
+      "titleColor": "#4a4540",
       "gridColor": "#b5ad99",
       "gridOpacity": 0.35,
       "domainColor": "#8a8377",
@@ -103,10 +104,13 @@
           "scale": {"domain": [0, 2300000]},
           "axis": {
             "title": "ATTENDANCE",
-            "titleFontWeight": "normal",
-            "titleFontSize": 11,
-            "format": "~s",
-            "tickCount": 6,
+              "titleFont": "Arial",
+              "titleFontWeight": 600,
+              "titleFontSize": 11,
+              "titleColor": "#4a4540",
+              "titlePadding": 12,
+              "format": "~s",
+              "tickCount": 6,
             "gridDash": [3, 4]
           }
         },
@@ -135,7 +139,7 @@
         "filled": true,
         "size": 120,
         "opacity": 0.95,
-        "stroke": "#c7bfa6",
+        "stroke": "rgba(176, 169, 153, 0.5)",
         "strokeWidth": 2
       },
       "transform": [{"filter": "datum.role === 'Headlining'"}],
@@ -159,7 +163,7 @@
         "filled": true,
         "size": 75,
         "opacity": 0.7,
-        "stroke": "#c7bfa6",
+        "stroke": "rgba(176, 169, 153, 0.5)",
         "strokeWidth": 1.5,
         "shape": "diamond"
       },
@@ -188,8 +192,8 @@
         "fontSize": 10,
         "font": "Georgia, 'Times New Roman', serif",
         "fontStyle": "italic",
-        "color": "#4c1d95",
-        "opacity": 0.8
+        "color": "#231f1d",
+        "opacity": 0.95
       },
       "transform": [
         {"filter": "datum.role === 'Headlining'"},
@@ -210,8 +214,8 @@
         "fontSize": 10,
         "font": "Georgia, 'Times New Roman', serif",
         "fontStyle": "italic",
-        "color": "#4c1d95",
-        "opacity": 0.8
+        "color": "#231f1d",
+        "opacity": 0.95
       },
       "transform": [
         {"filter": "datum.role === 'Headlining'"},
@@ -232,8 +236,8 @@
         "fontSize": 10,
         "font": "Georgia, 'Times New Roman', serif",
         "fontStyle": "italic",
-        "color": "#4c1d95",
-        "opacity": 0.8
+        "color": "#231f1d",
+        "opacity": 0.95
       },
       "transform": [
         {"filter": "datum.role === 'Headlining'"},
@@ -254,8 +258,8 @@
         "fontSize": 10,
         "font": "Georgia, 'Times New Roman', serif",
         "fontStyle": "italic",
-        "color": "#4c1d95",
-        "opacity": 0.8
+        "color": "#231f1d",
+        "opacity": 0.92
       },
       "transform": [
         {"filter": "datum.role === 'Headlining'"},
@@ -276,8 +280,8 @@
         "fontSize": 9,
         "font": "Georgia, 'Times New Roman', serif",
         "fontStyle": "italic",
-        "color": "#5a554d",
-        "opacity": 0.75
+        "color": "#231f1d",
+        "opacity": 0.92
       },
       "transform": [
         {"filter": "datum.role === 'Supporting'"},
@@ -298,8 +302,8 @@
         "fontSize": 9,
         "font": "Georgia, 'Times New Roman', serif",
         "fontStyle": "italic",
-        "color": "#5a554d",
-        "opacity": 0.75
+        "color": "#231f1d",
+        "opacity": 0.92
       },
       "transform": [
         {"filter": "datum.role === 'Supporting'"},
@@ -320,8 +324,8 @@
         "fontSize": 9,
         "font": "Georgia, 'Times New Roman', serif",
         "fontStyle": "italic",
-        "color": "#5a554d",
-        "opacity": 0.75
+        "color": "#231f1d",
+        "opacity": 0.92
       },
       "transform": [
         {"filter": "datum.role === 'Supporting'"},
@@ -342,8 +346,8 @@
         "fontSize": 9,
         "font": "Georgia, 'Times New Roman', serif",
         "fontStyle": "italic",
-        "color": "#5a554d",
-        "opacity": 0.75
+        "color": "#231f1d",
+        "opacity": 0.92
       },
       "transform": [
         {"filter": "datum.role === 'Supporting'"},
@@ -360,12 +364,12 @@
         "type": "text",
         "align": "center",
         "dx": 14,
-        "dy": -14,
+        "dy": -28,
         "fontSize": 9,
         "font": "Georgia, 'Times New Roman', serif",
         "fontStyle": "italic",
-        "color": "#5a554d",
-        "opacity": 0.75
+        "color": "#231f1d",
+        "opacity": 0.92
       },
       "transform": [
         {"filter": "datum.role === 'Supporting'"},
@@ -399,8 +403,8 @@
         "fontSize": 9,
         "font": "Georgia, 'Times New Roman', serif",
         "fontWeight": "normal",
-        "color": "#6b6259",
-        "opacity": 0.6,
+        "color": "#4a4540",
+        "opacity": 0.75,
         "fontStyle": "italic"
       },
       "data": {"values": [{"x": 2015, "label": "First headlining era"}]},
@@ -431,8 +435,8 @@
         "fontSize": 9,
         "font": "Georgia, 'Times New Roman', serif",
         "fontWeight": "normal",
-        "color": "#6b6259",
-        "opacity": 0.6,
+        "color": "#4a4540",
+        "opacity": 0.75,
         "fontStyle": "italic"
       },
       "data": {"values": [{"x": 2018.5, "label": "Astroworld breakthrough"}]},
@@ -463,8 +467,8 @@
         "fontSize": 9,
         "font": "Georgia, 'Times New Roman', serif",
         "fontWeight": "normal",
-        "color": "#6b6259",
-        "opacity": 0.6,
+        "color": "#4a4540",
+        "opacity": 0.75,
         "fontStyle": "italic"
       },
       "data": {"values": [{"x": 2024, "label": "Stadium-scale dominance"}]},

@@ -5,7 +5,8 @@
   "height": 1000,
   "padding": 0,
   "autosize": "none",
-  "background": "#c7bfa6",
+  "background": "rgba(176, 169, 153, 0.65)",
+  "border": "1px solid rgba(255, 255, 255, 0.2)",
 
   "signals": [
     {"name": "cx", "update": "width / 2"},
@@ -94,7 +95,7 @@
         {"type": "lookup", "from": "artist_node_info", "key": "node", "fields": ["collaborator"], "values": ["cluster"], "as": ["artist_cluster"]},
         {"type": "lookup", "from": "producer_set", "key": "collaborator", "fields": ["collaborator"], "values": ["collaborator"], "as": ["found_as_producer"]},
         {"type": "lookup", "from": "artist_set", "key": "collaborator", "fields": ["collaborator"], "values": ["collaborator"], "as": ["found_as_artist"]},
-        {"type": "formula", "expr": "datum.role == 'producer' ? 'Producer' : (datum.artist_cluster || 'Other')", "as": "cluster"},
+        {"type": "formula", "expr": "datum.role == 'producer' ? 'Producer' : (datum.artist_cluster || '')", "as": "cluster"},
         {"type": "formula", "expr": "datum.collaborator", "as": "name"},
         {"type": "formula", "expr": "(datum.role == 'artist' && datum.found_as_producer != null) || (datum.role == 'producer' && datum.found_as_artist != null)", "as": "is_dual_role"}
       ]
@@ -105,7 +106,6 @@
         {"cluster": "Central",          "angle": 0,   "distance": 0,   "color": "#32006e"},
         {"cluster": "Pop",              "angle": 0,   "distance": 293, "color": "#d0a8b0"},
         {"cluster": "Mainstream Rap",   "angle": 24,  "distance": 258, "color": "#a85561"},
-        {"cluster": "Other",            "angle": 48,  "distance": 310, "color": "#9a9a9a"},
         {"cluster": "Trap",             "angle": 72,  "distance": 258, "color": "#c4a05c"},
         {"cluster": "Cactus Jack",      "angle": 96,  "distance": 231, "color": "#8a6a4a"},
         {"cluster": "Producer",         "angle": 120, "distance": 328, "color": "#7a6a8a"},
@@ -198,7 +198,14 @@
       "source": "cluster_layout",
       "transform": [
         {"type": "lookup", "from": "active_clusters", "key": "cluster", "fields": ["cluster"], "values": ["cluster", "node_count"], "as": ["is_active", "node_count"]},
-        {"type": "filter", "expr": "datum.is_active != null && datum.cluster !== 'Central' && datum.cluster !== 'Producer'"}
+        {"type": "filter", "expr": "(datum.cluster == 'Pop' || datum.is_active != null) && datum.cluster !== 'Central' && datum.cluster !== 'Producer'"}
+      ]
+    },
+    {
+      "name": "pop_cluster_label_data",
+      "source": "active_cluster_labels",
+      "transform": [
+        {"type": "filter", "expr": "datum.cluster == 'Pop'"}
       ]
     }
   ],
@@ -213,7 +220,7 @@
           "y": {"signal": "cy + datum.distance * zoomLevel * sin(datum.angle * PI / 180)"},
           "size": {"signal": "max(18000, (datum.node_count || 1) * 2800)"},
           "shape": {"value": "circle"}, "fill": {"field": "color"},
-          "fillOpacity": {"signal": "(showArtists && !showProducers) ? (searchTerm != '' ? 0.01 : (hoveredNode != null ? 0.02 : 0.045)) : 0"},
+          "fillOpacity": {"signal": "(showArtists && !showProducers) ? (datum.cluster == 'Pop' ? (searchTerm != '' ? 0.08 : (hoveredNode != null ? 0.12 : 0.085)) : (searchTerm != '' ? 0.01 : (hoveredNode != null ? 0.02 : 0.045))) : 0"},
           "stroke": {"value": "transparent"}
         }
       }
@@ -252,7 +259,7 @@
         "update": {
           "x": {"field": "x"}, "y": {"field": "y"},
           "size": {"signal": "datum.node_size * datum.node_size"},
-          "shape": {"signal": "datum.role == 'producer' ? 'square' : 'circle'"},
+          "shape": {"signal": "datum.role == 'producer' ? 'diamond' : 'circle'"},
           "fill": {"field": "color"}, "stroke": {"field": "color"},
           "fillOpacity": {"signal": "datum.is_searching ? (datum.search_match ? 1 : 0.08) : (hoveredNode != null ? (hoveredNode.node_key == datum.node_key ? 1 : 0.11) : 0.82)"},
           "strokeOpacity": {"signal": "datum.is_searching ? (datum.search_match ? 1 : 0.03) : (hoveredNode != null ? (hoveredNode.node_key == datum.node_key ? 1 : 0.05) : 0.48)"},
@@ -306,7 +313,7 @@
         "update": {
           "x": {"field": "x"}, "y": {"field": "y"},
           "size": {"signal": "datum.node_size * datum.node_size * 1.6"},
-          "shape": {"value": "square"},
+          "shape": {"value": "diamond"},
           "fill": {"value": "transparent"}, "stroke": {"field": "color"}, "strokeWidth": {"value": 2},
           "strokeOpacity": {"signal": "datum.is_searching ? (datum.search_match ? 1 : 0.03) : (hoveredNode != null ? (hoveredNode.node_key == datum.node_key ? 1 : 0.08) : 0.7)"}
         }
@@ -343,7 +350,21 @@
         }
       }
     },
-
+    {
+      "type": "symbol", "name": "pop_cluster_zone", "interactive": false,
+      "from": {"data": "pop_cluster_label_data"},
+      "encode": {
+        "update": {
+          "x": {"signal": "cx + datum.distance * zoomLevel * cos(datum.angle * PI / 180)"},
+          "y": {"signal": "cy + datum.distance * zoomLevel * sin(datum.angle * PI / 180)"},
+          "size": {"signal": "max(18000, (datum.node_count || 1) * 2800)"},
+          "shape": {"value": "circle"},
+          "fill": {"field": "color"},
+          "fillOpacity": {"signal": "(showArtists && !showProducers) ? (searchTerm != '' ? 0.11 : (hoveredNode != null ? 0.15 : 0.12)) : 0"},
+          "stroke": {"value": "transparent"}
+        }
+      }
+    },
     {
       "type": "symbol", "name": "central_node",
       "from": {"data": "central_data"},

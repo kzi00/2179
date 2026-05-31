@@ -1,0 +1,136 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Brand deals bubble timeline (GDELT peak scaled with log) — Part Four: Brand Ecosystem",
+  "width": "container",
+  "height": 520,
+  "padding": {"left": 30, "right": 80, "top": 12, "bottom": 24},
+  "background": "rgba(176, 169, 153, 0.65)",
+  "data": {
+    "values": [
+      {"year":2017,"month":1,"brand":"Helmut Lang","collaboration_name":"Helmut Lang x Travis Scott","category":"Luxury Fashion","gdelt_peak":0.001},
+      {"year":2017,"month":10,"brand":"Ksubi","collaboration_name":"Ksubi x Travis Scott","category":"Streetwear","gdelt_peak":0.002},
+      {"year":2017,"month":2,"brand":"Nike","collaboration_name":"Travis Scott x Nike 2017","category":"Footwear","gdelt_peak":0.0035},
+      {"year":2017,"month":12,"brand":"Saint Laurent","collaboration_name":"Cactus Jack x Saint Laurent","category":"Luxury Fashion","gdelt_peak":0.009},
+      {"year":2018,"month":8,"brand":"Off-White","collaboration_name":"Off-White x Travis Scott \"Birds Eye View\" Tour Merch","category":"Luxury Fashion","gdelt_peak":0.035},
+      {"year":2018,"month":5,"brand":"Nike","collaboration_name":"Travis Scott x Nike 2018","category":"Footwear","gdelt_peak":0.0076},
+      {"year":2018,"month":11,"brand":"READYMADE","collaboration_name":"Cactus Jack x READYMADE 2018","category":"Luxury Fashion","gdelt_peak":0.0005},
+      {"year":2019,"month":5,"brand":"Nike","collaboration_name":"Travis Scott x Nike 2019","category":"Footwear","gdelt_peak":0.0799},
+      {"year":2019,"month":4,"brand":"READYMADE","collaboration_name":"Cactus Jack x READYMADE 2019","category":"Luxury Fashion","gdelt_peak":0.0004},
+      {"year":2019,"month":4,"brand":"New Era","collaboration_name":"New Era x Travis Scott x Houston Astros","category":"Sports","gdelt_peak":0.033},
+      {"year":2019,"month":12,"brand":"Hot Wheels","collaboration_name":"Cactus Jack for Hot Wheels BMW M3 E30 \"JACKBOYS Edition\"","category":"Collectibles","gdelt_peak":0.0007},
+      {"year":2020,"month":3,"brand":"Nike","collaboration_name":"Travis Scott x Nike 2020","category":"Footwear","gdelt_peak":0.082},
+      {"year":2020,"month":4,"brand":"Fortnite","collaboration_name":"Astronomical","category":"Gaming","gdelt_peak":0.1045},
+      {"year":2020,"month":4,"brand":"Nerf","collaboration_name":"Travis Scott x Nerf","category":"Collectibles","gdelt_peak":0.0056},
+      {"year":2020,"month":9,"brand":"McDonald's","collaboration_name":"The Travis Scott Meal","category":"Food & Beverage","gdelt_peak":0.0062},
+      {"year":2020,"month":9,"brand":"Cactus Plant Flea Market","collaboration_name":"Cactus Jack x Cactus Plant Flea Market","category":"Streetwear","gdelt_peak":0.0007},
+      {"year":2020,"month":4,"brand":"PlayStation","collaboration_name":"Travis Scott x PlayStation","category":"Gaming","gdelt_peak":0.0416},
+      {"year":2020,"month":12,"brand":"Byredo","collaboration_name":"Byredo x Cactus Jack","category":"Lifestyle","gdelt_peak":0.0025},
+      {"year":2020,"month":5,"brand":"UNINTERRUPTED","collaboration_name":"Cactus Jack x UNINTERRUPTED","category":"Streetwear","gdelt_peak":0.035},
+      {"year":2020,"month":11,"brand":"VERZUZ","collaboration_name":"Cactus Jack for VERZUZ TM:1017","category":"Entertainment","gdelt_peak":0.0025},
+      {"year":2021,"month":5,"brand":"Nike","collaboration_name":"Travis Scott x Nike 2021","category":"Footwear","gdelt_peak":0.0457},
+      {"year":2021,"month":6,"brand":"Dior","collaboration_name":"Cactus Jack x Dior","category":"Luxury Fashion","gdelt_peak":0.0301},
+      {"year":2021,"month":2,"brand":"i-D Magazine","collaboration_name":"Cactus Jack x i-D","category":"Lifestyle","gdelt_peak":0.0084},
+      {"year":2021,"month":10,"brand":"NEIGHBORHOOD","collaboration_name":"Cactus Jack x NEIGHBORHOOD","category":"Streetwear","gdelt_peak":0.038},
+      {"year":2021,"month":10,"brand":"mastermind JAPAN","collaboration_name":"Cactus Jack x mastermind JAPAN","category":"Luxury Fashion","gdelt_peak":0.0157},
+      {"year":2022,"month":5,"brand":"Nike","collaboration_name":"Travis Scott x Nike 2022","category":"Footwear","gdelt_peak":0.0064},
+      {"year":2022,"month":1,"brand":"Zouk Nightclub","collaboration_name":"Road to Utopia","category":"Entertainment","gdelt_peak":0.003},
+      {"year":2023,"month":8,"brand":"Nike","collaboration_name":"Travis Scott x Nike 2023","category":"Footwear","gdelt_peak":0.0159},
+      {"year":2023,"month":12,"brand":"Audemars Piguet","collaboration_name":"Audemars Piguet x Cactus Jack","category":"Luxury Fashion","gdelt_peak":0.0021},
+      {"year":2023,"month":7,"brand":"A24 Films","collaboration_name":"Cactus Jack Films x A24","category":"Entertainment","gdelt_peak":0.0225},
+      {"year":2024,"month":8,"brand":"Nike","collaboration_name":"Travis Scott x Nike 2024","category":"Footwear","gdelt_peak":0.0262},
+      {"year":2024,"month":6,"brand":"Topps Trading Cards","collaboration_name":"Topps Chrome Cosmic x Cactus Jack","category":"Collectibles","gdelt_peak":0.0029},
+      {"year":2024,"month":4,"brand":"Mitchell & Ness","collaboration_name":"Cactus Jack x Mitchell & Ness","category":"Streetwear","gdelt_peak":0.0032},
+      {"year":2024,"month":8,"brand":"Sp5der","collaboration_name":"Cactus Jack x SP5DER","category":"Streetwear","gdelt_peak":0.0006},
+      {"year":2024,"month":11,"brand":"ComplexCon","collaboration_name":"CactusCon","category":"Entertainment","gdelt_peak":0.003},
+      {"year":2025,"month":12,"brand":"Nike","collaboration_name":"Travis Scott x Nike 2025","category":"Footwear","gdelt_peak":0.0142},
+      {"year":2025,"month":7,"brand":"WWE","collaboration_name":"Cactus Jack x WWE","category":"Sports","gdelt_peak":0.0185},
+      {"year":2025,"month":4,"brand":"Topps Trading Cards","collaboration_name":"Topps Chrome WWE Cactus Jack x WrestleMania","category":"Collectibles","gdelt_peak":0.001},
+      {"year":2025,"month":5,"brand":"Oakley","collaboration_name":"Cactus Jack x Oakley","category":"Sports","gdelt_peak":0.0008},
+      {"year":2025,"month":3,"brand":"Spotify","collaboration_name":"Spotify x Barca x Cactus Jack","category":"Sports","gdelt_peak":0.0237},
+      {"year":2025,"month":7,"brand":"Erewhon","collaboration_name":"Cactus Jack x Erewhon","category":"Food & Beverage","gdelt_peak":0.0013},
+      {"year":2025,"month":4,"brand":"Coachella","collaboration_name":"The Village by Cactus Jack","category":"Entertainment","gdelt_peak":0.0483}
+    ]
+  },
+  "transform": [
+    {"calculate": "toDate(datum.year + '-' + (datum.month < 10 ? '0' + datum.month : datum.month) + '-01')", "as": "date"},
+    {"calculate": "toNumber(datum.gdelt_peak)", "as": "gdelt_peak_num"},
+    {"calculate": "log(datum.gdelt_peak_num + 1)", "as": "log_peak"}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "circle", "opacity": 0.92, "fillOpacity": 0.78, "stroke": "#3a3a3a", "strokeWidth": 1.1},
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal",
+          "axis": {
+            "title": "Year",
+            "format": "%Y",
+            "labelAngle": 0,
+            "grid": false,
+            "values": ["2016-01-01", "2017-01-01", "2018-01-01", "2019-01-01", "2020-01-01", "2021-01-01", "2022-01-01", "2023-01-01", "2024-01-01", "2025-01-01"],
+            "labelFont": "Arial",
+            "titleFont": "Arial",
+            "labelColor": "#4a4540",
+            "titleColor": "#4a4540",
+            "titlePadding": 30
+          },
+          "scale": {"domain": ["2016-07-01", "2026-06-30"], "nice": false}
+        },
+        "y": {"field": "category", "type": "nominal", "axis": {"title": "Category", "labelFont": "Arial", "titleFont": "Arial", "labelColor": "#4a4540", "titleColor": "#4a4540"}},
+        "size": {"field": "log_peak", "type": "quantitative", "scale": {"range": [130, 6000]}, "title": "log(gdelt_peak + 1)", "legend": null},
+        "color": {"field": "category", "type": "nominal", "scale": {"scheme": "tableau10"}, "legend": null},
+        "tooltip": [
+          {"field": "brand", "type": "nominal", "title": "Brand"},
+          {"field": "collaboration_name", "type": "nominal", "title": "Collaboration Name"},
+          {"field": "year", "type": "quantitative", "title": "Year"},
+          {"field": "gdelt_peak_num", "type": "quantitative", "title": "GDELT Score"}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.log_peak >= 0.03 || datum.brand === 'Dior' || datum.brand === 'WWE' || datum.brand === 'Spotify' || datum.brand === 'A24 Films' || (datum.brand === 'Nike' && datum.year >= 2023)"},
+        {"calculate": "datum.brand === 'A24 Films' ? 'A24' : datum.brand", "as": "brand_label_top"},
+        {"calculate": "datum.brand === 'A24 Films' ? 'Films' : ''", "as": "brand_label_bottom"}
+      ],
+      "mark": {"type": "text", "dy": 0, "font": "Arial", "fontSize": 8, "fontWeight": 600, "fill": "#404040", "limit": 90},
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "category",
+          "type": "nominal"
+        },
+        "text": {
+          "field": "brand_label_top",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.brand === 'A24 Films'"},
+        {"calculate": "'Films'", "as": "brand_label_bottom"}
+      ],
+      "mark": {"type": "text", "dy": 10, "font": "Arial", "fontSize": 8, "fontWeight": 600, "fill": "#404040", "limit": 90},
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "category",
+          "type": "nominal"
+        },
+        "text": {
+          "field": "brand_label_bottom",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "config": {"view": {"stroke": null}, "axis": {"labelFont": "Arial", "titleFont": "Arial", "labelColor": "#4a4540", "titleColor": "#4a4540"}, "legend": {"labelFont": "Arial", "titleFont": "Arial"}}
+}

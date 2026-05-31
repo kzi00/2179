@@ -3,7 +3,8 @@
   "description": "Top 14 most-streamed Travis Scott songs on Spotify, color-coded by parent album. Reveals which tracks accumulated the largest cultural footprint across his catalogue.",
   "width": "container",
   "height": 580,
-  "background": "#c7bfa6",
+  "background": "rgba(176, 169, 153, 0.65)",
+  "border": "1px solid rgba(255, 255, 255, 0.2)",
   "padding": {"left": 40, "right": 60, "top": 30, "bottom": 30},
   "data": {
     "url": "data/top_songs.csv"
@@ -30,16 +31,21 @@
           "field": "song",
           "type": "nominal",
           "sort": "-x",
-          "axis": {
-            "title": null,
-            "labelFont": "Georgia",
-            "labelFontSize": 12,
-            "labelColor": "#2a2a2a",
-            "labelPadding": 12,
-            "labelLimit": 200,
-            "domain": false,
-            "ticks": false
-          }
+            "axis": {
+              "title": "Song",
+              "titleFont": "Arial",
+              "titleFontSize": 11,
+              "titleFontWeight": 600,
+              "titleColor": "#4a4540",
+              "titlePadding": 1,
+              "labelFont": "Georgia",
+              "labelFontSize": 12,
+              "labelColor": "#2a2a2a",
+              "labelPadding": 6,
+              "labelLimit": 200,
+              "domain": false,
+              "ticks": false
+            }
         },
         "x": {
           "field": "streams_billions",
@@ -47,13 +53,13 @@
           "axis": {
             "title": "Streams (billions)",
             "titleFont": "Arial",
-            "titleFontSize": 10,
-            "titleFontWeight": 400,
-            "titleColor": "#7a7a7a",
-            "titlePadding": 16,
+            "titleFontSize": 11,
+            "titleFontWeight": 600,
+            "titleColor": "#4a4540",
+            "titlePadding": 12,
             "labelFont": "Arial",
             "labelFontSize": 10,
-            "labelColor": "#888",
+            "labelColor": "#4a4540",
             "grid": true,
             "gridColor": "#d4cfbf",
             "gridOpacity": 0.5,
@@ -81,24 +87,7 @@
               "#8b7d9a"
             ]
           },
-          "legend": {
-            "title": "Parent Album",
-            "titleFont": "Arial",
-            "titleFontSize": 10,
-            "titleFontWeight": 600,
-            "titleColor": "#32006e",
-            "titlePadding": 12,
-            "labelFont": "Arial",
-            "labelFontSize": 10,
-            "labelColor": "#4a4a4a",
-            "orient": "bottom-right",
-            "direction": "vertical",
-            "offset": 24,
-            "padding": 12,
-            "symbolType": "square",
-            "symbolSize": 100,
-            "rowPadding": 6
-          }
+          "legend": null
         },
         "tooltip": [
           {"field": "song", "type": "nominal", "title": "Track"},
@@ -116,7 +105,7 @@
         "font": "Arial",
         "fontSize": 11,
         "fontWeight": 600,
-        "color": "#32006e"
+        "color": "#4a4541"
       },
       "encoding": {
         "y": {

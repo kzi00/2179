@@ -1,0 +1,110 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Revenue sankey for Travis Scott rendered with Vega.",
+  "width": 1180,
+  "height": 520,
+  "padding": 0,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding",
+    "resize": true
+  },
+  "background": "transparent",
+  "scales": [
+    {
+      "name": "categoryColor",
+      "type": "ordinal",
+      "domain": ["Music", "Live Touring", "Brand Partnerships", "Merchandise", "Entertainment & Media"],
+      "range": ["#5b457e", "#6a369d", "#7f59aa", "#a077c6", "#b79bd7"]
+    }
+  ],
+  "data": [
+    {
+      "name": "links",
+      "values": []
+    },
+    {
+      "name": "nodes",
+      "values": []
+    }
+  ],
+  "marks": [
+    {
+      "name": "nodeRect",
+      "type": "rect",
+      "from": {
+        "data": "nodes"
+      },
+      "encode": {
+        "enter": {
+          "cornerRadius": {
+            "value": 2
+          },
+          "stroke": {
+            "value": "rgba(70,70,70,0.6)"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        },
+        "update": {
+          "x": {
+            "field": "x0"
+          },
+          "x2": {
+            "field": "x1"
+          },
+          "y": {
+            "field": "y0"
+          },
+          "y2": {
+            "field": "y1"
+          },
+          "fill": {
+            "signal": "datum.type === 'travis' ? '#32006e' : scale('categoryColor', datum.category_key)"
+          },
+          "fillOpacity": {
+            "signal": "datum.type === 'source' ? 0.5 : datum.type === 'category' ? 0.88 : 1"
+          }
+        }
+      }
+    },
+    {
+      "name": "nodeLabel",
+      "type": "text",
+      "from": {
+        "data": "nodes"
+      },
+      "encode": {
+        "enter": {
+          "baseline": {
+            "value": "middle"
+          },
+          "font": {
+            "value": "Arial"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#201633"
+          }
+        },
+        "update": {
+          "x": {
+            "signal": "datum.type === 'travis' ? datum.x0 - 10 : datum.x1 + 8"
+          },
+          "y": {
+            "signal": "(datum.y0 + datum.y1) / 2"
+          },
+          "align": {
+            "signal": "datum.type === 'travis' ? 'right' : 'left'"
+          },
+          "text": {
+            "field": "name"
+          }
+        }
+      }
+    }
+  ]
+}

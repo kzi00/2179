@@ -3,7 +3,8 @@
   "description": "Travis Scott First-Week Album-Equivalent Units. Visualises commercial impact of each studio release and compilation across his career.",
   "width": "container",
   "height": 480,
-  "background": "#c7bfa6",
+  "background": "rgba(176, 169, 153, 0.65)",
+  "border": "1px solid rgba(255, 255, 255, 0.2)",
   "padding": {"left": 40, "right": 40, "top": 60, "bottom": 100},
   "data": {
     "url": "data/first_week_sales.csv"
@@ -28,13 +29,18 @@
           "sort": null,
           "axis": {
             "labelAngle": 0,
-            "labelFont": "Georgia",
+            "labelFont": "Arial",
             "labelFontSize": 11,
-            "labelColor": "#2a2a2a",
+            "labelColor": "#4a4540",
             "labelLineHeight": 13,
             "labelPadding": 12,
             "labelExpr": "split(datum.value, '|')",
-            "title": null,
+            "title": "Album Name",
+            "titleFont": "Arial",
+            "titleFontSize": 11,
+            "titleFontWeight": 600,
+            "titleColor": "#4a4540",
+            "titlePadding": 12,
             "domain": false,
             "ticks": false
           }
@@ -45,13 +51,13 @@
           "axis": {
             "title": "First-week album-equivalent units (thousands)",
             "titleFont": "Arial",
-            "titleFontSize": 10,
-            "titleFontWeight": 400,
-            "titleColor": "#7a7a7a",
-            "titlePadding": 16,
+            "titleFontSize": 11,
+            "titleFontWeight": 600,
+            "titleColor": "#4a4540",
+            "titlePadding": 12,
             "labelFont": "Arial",
             "labelFontSize": 10,
-            "labelColor": "#888",
+            "labelColor": "#4a4540",
             "grid": true,
             "gridColor": "#d4cfbf",
             "gridOpacity": 0.5,
@@ -79,7 +85,7 @@
         "font": "Arial",
         "fontSize": 10,
         "fontWeight": 600,
-        "color": "#32006e"
+        "color": "#4a4540"
       },
       "encoding": {
         "x": {
@@ -100,6 +106,7 @@
     }
   ],
   "config": {
-    "view": {"stroke": null}
+    "view": {"stroke": null},
+    "axis": {"labelFont": "Arial", "titleFont": "Arial", "labelColor": "#4a4540", "titleColor": "#4a4540"}
   }
 }

@@ -55,6 +55,12 @@ var NOTES = {
 };
 
 var LINE_Y = 160, COVER_SIZE = 44;
+var GLOBAL_POINT_SHIFT = 30;
+var DATE_OFFSETS = {
+  '21/05/2013': 0,
+  '21/12/2017': 0,
+  '3/08/2018': 18
+};
 var tooltipEl, hideTimer;
 
 /* ── BOOT ───────────────────────────────────── */
@@ -97,9 +103,11 @@ function positionReleases(view, releases) {
     var x = xScale(parseDate(r.date));
     if (isNaN(x)) return;
 
+    var adjustedX = x + GLOBAL_POINT_SHIFT + (DATE_OFFSETS[r.date] || 0);
+
     var item = document.createElement('div');
     item.className = 'release-item ' + (r.label_position === 'above' ? 'label-above' : 'label-below');
-    item.style.cssText = 'left:' + x + 'px;top:' + (LINE_Y - COVER_SIZE / 2) + 'px;height:' + COVER_SIZE + 'px;margin-left:-70px';
+    item.style.cssText = 'left:' + adjustedX + 'px;top:' + (LINE_Y - COVER_SIZE / 2) + 'px;height:' + COVER_SIZE + 'px;margin-left:-70px';
 
     var wrap = document.createElement('div');
     wrap.className = 'release-cover-wrap';

@@ -3,11 +3,12 @@
   "description": "Travis Scott Discography Timeline",
   "width": "container",
   "height": 320,
-  "background": "#c7bfa6",
-  "padding": {"left": 80, "right": 80, "top": 0, "bottom": 0},
+  "background": "rgba(176, 169, 153, 0.65)",
+  "border": "1px solid rgba(255, 255, 255, 0.2)",
+  "padding": {"left": 64, "right": 80, "top": 0, "bottom": 0},
   "data": {
     "values": [
-      {"start": "2012-09-01", "end": "2026-04-01"}
+      {"start": "2013-01-01", "end": "2026-04-01"}
     ]
   },
   "layer": [
@@ -25,7 +26,7 @@
           "type": "temporal",
           "axis": null,
           "scale": {
-            "domain": ["2012-09-01", "2026-04-01"],
+            "domain": ["2013-01-01", "2026-04-01"],
             "nice": false
           }
         },

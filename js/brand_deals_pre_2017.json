@@ -1,0 +1,197 @@
+{
+	"$schema": "https://vega.github.io/schema/vega/v5.json",
+	"description": "Evolution Path for Travis Scott brand collaborations before 2017, emphasizing the move from niche partnerships to higher-visibility streetwear moments.",
+	"width": 620,
+	"height": 320,
+	"background": "rgba(176, 169, 153, 0.65)",
+	"padding": {"left": 24, "right": 24, "top": 20, "bottom": 36},
+	"autosize": {"type": "fit", "contains": "content", "resize": true},
+	"data": [
+		{
+			"name": "table",
+			"url": "../data/brand_deals_search_result.csv",
+			"format": {
+				"type": "csv",
+				"parse": {
+					"year": "number",
+					"month": "number",
+					"search_result_count": "number"
+				}
+			},
+			"transform": [
+				{
+					"type": "formula",
+					"expr": "datetime(datum.year, datum.month - 1, 1)",
+					"as": "date"
+				},
+				{
+					"type": "formula",
+					"expr": "datum.year + (datum.month - 1) / 12",
+					"as": "year_position"
+				},
+				{
+					"type": "window",
+					"ops": ["row_number"],
+					"as": ["seq"],
+					"sort": [{"field": "date", "order": "ascending"}]
+				},
+				{
+					"type": "formula",
+					"expr": "datum.seq % 2 === 0 ? 24 : -26",
+					"as": "label_offset"
+				}
+			]
+		}
+	],
+	"scales": [
+		{
+			"name": "x",
+			"type": "linear",
+			"domain": [2012.5, 2017],
+			"zero": false,
+			"range": "width"
+		},
+		{
+			"name": "y",
+			"type": "linear",
+			"domain": {"data": "table", "field": "search_result_count"},
+			"domainMin": 0,
+			"nice": false,
+			"zero": false,
+			"range": "height"
+		},
+		{
+			"name": "size",
+			"type": "sqrt",
+			"domain": {"data": "table", "field": "search_result_count"},
+			"range": [100, 1500]
+		},
+		{
+			"name": "color",
+			"type": "ordinal",
+			"domain": {"data": "table", "field": "category"},
+			"range": {"scheme": "tableau10"}
+		}
+	],
+	"axes": [
+		{
+			"scale": "x",
+			"orient": "bottom",
+			"title": "Time",
+			"format": ".0f",
+			"tickCount": 5,
+			"labelFont": "Arial",
+			"titleFont": "Arial",
+			"labelColor": "#4a4540",
+			"titleColor": "#4a4540",
+			"domainColor": "#4d5563",
+			"tickColor": "#4d5563",
+			"grid": false,
+			"labelAngle": 0,
+			"labelPadding": 10,
+			"titlePadding": 18
+		},
+		{
+			"scale": "y",
+			"orient": "left",
+			"title": "Headline count",
+			"labels": true,
+			"labelFont": "Arial",
+			"titleFont": "Arial",
+			"labelColor": "#4a4540",
+			"ticks": true,
+			"tickColor": "#4d5563",
+			"domain": true,
+			"domainColor": "#4d5563",
+			"grid": true,
+			"gridColor": "rgba(255,255,255,0.08)",
+			"format": ",",
+			"titleColor": "#4a4540",
+			"titlePadding": 12,
+			"tickCount": 5,
+			"offset": 0,
+			"tickOffset": 0,
+			"labelPadding": 6
+		}
+	],
+	"marks": [
+		{
+			"type": "line",
+			"from": {"data": "table"},
+			"sort": {"field": "year_position", "order": "ascending"},
+			"interpolate": "monotone-x",
+			"encode": {
+				"update": {
+					"x": {"scale": "x", "field": "year_position"},
+					"y": {"scale": "y", "field": "search_result_count"},
+					"stroke": {"value": "#8fa3bf"},
+					"strokeWidth": {"value": 10},
+					"strokeOpacity": {"value": 0.10}
+				}
+			}
+		},
+		{
+			"type": "line",
+			"from": {"data": "table"},
+			"sort": {"field": "year_position", "order": "ascending"},
+			"interpolate": "monotone-x",
+			"encode": {
+				"update": {
+					"x": {"scale": "x", "field": "year_position"},
+					"y": {"scale": "y", "field": "search_result_count"},
+					"stroke": {"value": "#7a7a7a"},
+					"strokeWidth": {"value": 3},
+					"strokeOpacity": {"value": 0.82}
+				}
+			}
+		},
+		{
+			"type": "symbol",
+			"from": {"data": "table"},
+			"encode": {
+				"update": {
+					"x": {"scale": "x", "field": "year_position"},
+					"y": {"scale": "y", "field": "search_result_count"},
+					"size": {"scale": "size", "field": "search_result_count"},
+					"fill": {"scale": "color", "field": "category"},
+					"fillOpacity": {"value": 0.78},
+					"stroke": {"value": "#3a3a3a"},
+					"strokeWidth": {"value": 1.1},
+					"opacity": {"value": 0.92},
+					"tooltip": {
+							"signal": "{'brand': datum.brand, 'Collaboration Name': datum.collaboration_name, 'year': datum.year, 'search_result_count': datum.search_result_count}"
+					}
+				},
+				"hover": {
+					"stroke": {"value": "#ffffff"},
+					"strokeWidth": {"value": 2},
+					"opacity": {"value": 1}
+				}
+			}
+		},
+		{
+			"type": "text",
+			"from": {"data": "table"},
+			"encode": {
+				"update": {
+					"x": {"scale": "x", "field": "year_position"},
+					"y": {"scale": "y", "field": "search_result_count"},
+					"dy": {"field": "label_offset"},
+					"text": {"field": "brand"},
+					"align": {"value": "center"},
+					"baseline": {"value": "middle"},
+					"font": {"value": "Arial"},
+					"fontSize": {"value": 10},
+					"fontWeight": {"value": 600},
+					"fill": {"value": "#404040"}
+					}
+				}
+			}
+		],
+	"config": {
+		"view": {"stroke": null},
+		"axis": {"labelFont": "Arial", "titleFont": "Arial", "labelColor": "#4a4540", "titleColor": "#4a4540", "labelPadding": 6},
+		"legend": {"labelFont": "Arial", "titleFont": "Arial"}
+	}
+
+}

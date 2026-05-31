@@ -3,8 +3,8 @@
   "description": "Global search interest in Travis Scott from 2013 to 2025. Choropleth world map with year slider showing country-level Google Trends data.",
   "width": "container",
   "height": 580,
-  "background": "#c7bfa6",
-  "padding": {"left": 0, "right": 0, "top": 20, "bottom": 20},
+  "background": "transparent",
+  "padding": {"left": 0, "right": 0, "top": 20, "bottom": 30},
   "params": [
     {
       "name": "selectedYear",
@@ -78,11 +78,12 @@
           "titlePadding": 12,
           "labelFont": "Arial",
           "labelFontSize": 9,
-          "labelColor": "#5a5a5a",
-          "orient": "bottom-left",
+          "labelColor": "#574f4b",
+          "orient": "none",
+          "legendY": 550,
+          "legendX": 25,
           "direction": "horizontal",
-          "offset": 20,
-          "padding": 8
+          "padding": 0
         }
       },
       "value": "#d4cfbf"

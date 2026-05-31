@@ -1,0 +1,433 @@
+{
+	"description": "Digital Audience Ecosystem for Travis Scott. A sunburst chart showing how his audience is distributed across social media, audio streaming, and video platforms.",
+	"width": 900,
+	"height": 720,
+	"padding": 18,
+	"autosize": {
+		"type": "fit",
+		"contains": "padding",
+		"resize": true
+	},
+	"background": "rgba(176, 169, 153, 0.65)",
+	"signals": [
+		{
+			"name": "width",
+			"update": "containerSize()[0]"
+		},
+		{
+			"name": "height",
+			"update": "min(760, max(520, width * 0.9))"
+		},
+		{
+			"name": "radius",
+			"update": "min(width, height) / 2 - 26"
+		},
+		{
+			"name": "innerRadius",
+			"update": "radius * 0.23"
+		},
+		{
+			"name": "hoveredId",
+			"value": null,
+			"on": [
+				{
+					"events": "@sunburstArc:mouseover",
+					"update": "datum.id"
+				},
+				{
+					"events": "@sunburstArc:mouseout",
+					"update": "null"
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"name": "followers_rows",
+			"url": "data/followers.csv",
+			"format": {"type": "csv"},
+			"transform": [
+				{
+					"type": "formula",
+					"expr": "datum.value == null || datum.value === '' ? null : toNumber(datum.value)",
+					"as": "csv_value"
+				}
+			]
+		},
+		{
+			"name": "category_totals",
+			"source": "followers_rows",
+			"transform": [
+				{
+					"type": "filter",
+					"expr": "datum.csv_value != null"
+				},
+				{
+					"type": "aggregate",
+					"groupby": ["parent"],
+					"ops": ["sum"],
+					"fields": ["csv_value"],
+					"as": ["category_total"]
+				}
+			]
+		},
+		{
+			"name": "root_total",
+			"source": "followers_rows",
+			"transform": [
+				{
+					"type": "filter",
+					"expr": "datum.csv_value != null"
+				},
+				{
+					"type": "aggregate",
+					"ops": ["sum"],
+					"fields": ["csv_value"],
+					"as": ["total_followers"]
+				},
+				{
+					"type": "formula",
+					"expr": "'total'",
+					"as": "key"
+				},
+				{
+					"type": "formula",
+					"expr": "datum.total_followers >= 1000000 ? (datum.total_followers / 1000000 >= 10 ? format(datum.total_followers / 1000000, '.0f') : format(datum.total_followers / 1000000, '.1f')) + 'M' : datum.total_followers >= 1000 ? (datum.total_followers / 1000 >= 10 ? format(datum.total_followers / 1000, '.0f') : format(datum.total_followers / 1000, '.1f')) + 'K' : format(datum.total_followers, ',.0f')",
+					"as": "followers_label"
+				}
+			]
+		},
+		{
+			"name": "root_node",
+			"source": "followers_rows",
+			"transform": [
+				{
+					"type": "aggregate",
+					"groupby": ["parent"]
+				},
+				{
+					"type": "filter",
+					"expr": "datum.parent != null && datum.parent !== ''"
+				},
+				{
+					"type": "lookup",
+					"from": "followers_rows",
+					"key": "child",
+					"fields": ["parent"],
+					"values": ["child"],
+					"as": ["child_match"]
+				},
+				{
+					"type": "filter",
+					"expr": "datum.child_match == null"
+				},
+				{
+					"type": "formula",
+					"expr": "datum.parent",
+					"as": "id"
+				},
+				{
+					"type": "formula",
+					"expr": "null",
+					"as": "parent"
+				},
+				{
+					"type": "formula",
+					"expr": "datum.id",
+					"as": "category"
+				},
+				{
+					"type": "formula",
+					"expr": "datum.id",
+					"as": "platform"
+				},
+				{
+					"type": "formula",
+					"expr": "'total'",
+					"as": "key"
+				},
+				{
+					"type": "lookup",
+					"from": "root_total",
+					"key": "key",
+					"fields": ["key"],
+					"values": ["total_followers"],
+					"as": ["root_total"]
+				},
+				{
+					"type": "formula",
+					"expr": "0",
+					"as": "audience_value"
+				}
+			]
+		},
+		{
+			"name": "tree_nodes",
+			"source": "followers_rows",
+			"transform": [
+				{
+					"type": "filter",
+					"expr": "datum.child != null && datum.child !== ''"
+				},
+				{
+					"type": "lookup",
+					"from": "followers_rows",
+					"key": "child",
+					"fields": ["parent"],
+					"values": ["parent"],
+					"as": ["grandparent"]
+				},
+				{
+					"type": "lookup",
+					"from": "category_totals",
+					"key": "parent",
+					"fields": ["child"],
+					"values": ["category_total"],
+					"as": ["category_total"]
+				},
+				{
+					"type": "formula",
+					"expr": "datum.child",
+					"as": "id"
+				},
+				{
+					"type": "formula",
+					"expr": "datum.parent",
+					"as": "parent"
+				},
+				{
+					"type": "formula",
+					"expr": "datum.csv_value == null ? 0 : datum.csv_value",
+					"as": "audience_value"
+				},
+				{
+					"type": "formula",
+					"expr": "datum.grandparent == null ? datum.child : datum.parent",
+					"as": "category"
+				},
+				{
+					"type": "formula",
+					"expr": "datum.grandparent == null ? '' : datum.child",
+					"as": "platform"
+				}
+			]
+		},
+		{
+			"name": "tree",
+			"source": ["root_node", "tree_nodes"],
+			"transform": [
+				{
+					"type": "filter",
+					"expr": "datum.id != null && datum.id !== ''"
+				},
+				{
+					"type": "stratify",
+					"key": "id",
+					"parentKey": "parent"
+				},
+				{
+					"type": "partition",
+					"field": "audience_value",
+					"padding": 0.004,
+					"size": [
+						{"signal": "2 * PI"},
+						{"signal": "radius"}
+					],
+					"as": ["startAngle", "innerRadius", "endAngle", "outerRadius", "depth", "children"]
+				},
+				{
+					"type": "joinaggregate",
+					"ops": ["max"],
+					"fields": ["value"],
+					"as": ["total_audience"]
+				},
+				{
+					"type": "formula",
+					"expr": "'total'",
+					"as": "key"
+				},
+				{
+					"type": "lookup",
+					"from": "root_total",
+					"key": "key",
+					"fields": ["key"],
+					"values": ["total_followers"],
+					"as": ["root_total"]
+				},
+				{
+					"type": "formula",
+					"expr": "datum.depth === 0 ? (datum.root_total == null ? datum.value : datum.root_total) : datum.depth === 1 ? (datum.category_total == null ? datum.value : datum.category_total) : datum.audience_value",
+					"as": "display_value"
+				},
+				{
+					"type": "formula",
+					"expr": "datum.total_audience ? datum.display_value / datum.total_audience : 0",
+					"as": "audience_share"
+				},
+				{
+					"type": "formula",
+					"expr": "datum.display_value >= 1000000 ? (datum.display_value / 1000000 >= 10 ? format(datum.display_value / 1000000, '.0f') : format(datum.display_value / 1000000, '.1f')) + 'M' : datum.display_value >= 1000 ? (datum.display_value / 1000 >= 10 ? format(datum.display_value / 1000, '.0f') : format(datum.display_value / 1000, '.1f')) + 'K' : format(datum.display_value, ',.0f')",
+					"as": "audience_label"
+				},
+				{
+					"type": "formula",
+					"expr": "format(datum.audience_share, '.1%')",
+					"as": "share_label"
+				},
+				{
+					"type": "formula",
+					"expr": "(datum.startAngle + datum.endAngle) / 2",
+					"as": "midAngle"
+				},
+				{
+					"type": "formula",
+					"expr": "(datum.innerRadius + datum.outerRadius) / 2",
+					"as": "midRadius"
+				},
+				{
+					"type": "formula",
+					"expr": "datum.depth === 1 && datum.id === 'Audio Streaming' ? width / 2 - 54 : datum.depth === 1 && datum.id === 'Social Media' ? width / 2 + 96 : datum.depth === 2 && datum.id === 'Video' ? width / 2 + cos(datum.midAngle - PI / 2) * datum.midRadius + 12 : datum.depth === 2 && datum.id === 'SoundCloud' ? width / 2 + cos(datum.midAngle - PI / 2) * datum.midRadius + 18 : datum.depth === 2 && datum.id === 'Instagram' ? width / 2 + cos(datum.midAngle - PI / 2) * datum.midRadius - 20 : datum.depth === 2 && datum.id === 'TikTok' ? width / 2 + cos(datum.midAngle - PI / 2) * datum.midRadius - 12 : datum.depth === 2 && datum.id === 'X (Twitter)' ? width / 2 + cos(datum.midAngle - PI / 2) * datum.midRadius - 16 : datum.depth === 2 && datum.id === 'Facebook' ? width / 2 + cos(datum.midAngle - PI / 2) * datum.midRadius + 20 : datum.depth === 2 && datum.id === 'Spotify' ? width / 2 + cos(datum.midAngle - PI / 2) * datum.midRadius - 4 : width / 2 + cos(datum.midAngle - PI / 2) * datum.midRadius",
+					"as": "labelX"
+				},
+				{
+					"type": "formula",
+					"expr": "datum.depth === 1 && datum.id === 'Audio Streaming' ? height / 2 + 136 : datum.depth === 1 && datum.id === 'Social Media' ? height / 2 + 104 : datum.depth === 2 && datum.id === 'Instagram' ? height / 2 + sin(datum.midAngle - PI / 2) * datum.midRadius + 16 : datum.depth === 2 && datum.id === 'Spotify' ? height / 2 + sin(datum.midAngle - PI / 2) * datum.midRadius - 6 : height / 2 + sin(datum.midAngle - PI / 2) * datum.midRadius",
+					"as": "labelY"
+				},
+				{
+					"type": "formula",
+					"expr": "datum.midAngle > PI ? 'right' : 'left'",
+					"as": "labelAlign"
+				},
+				{
+					"type": "formula",
+					"expr": "datum.depth === 1 ? datum.id : datum.platform",
+					"as": "displayLabel"
+				},
+				{
+					"type": "formula",
+					"expr": "datum.depth === 1 ? (datum.endAngle - datum.startAngle) > 0.18 : datum.depth === 2 && (datum.endAngle - datum.startAngle) > 0.08",
+					"as": "showLabel"
+				}
+			]
+		}
+	],
+	"scales": [
+		{
+			"name": "palette",
+			"type": "ordinal",
+			"domain": ["Social Media", "Audio Streaming", "Video"],
+			"range": ["#6a369d", "#9670c5", "#c9abeb"]
+		}
+	],
+	"marks": [
+		{
+			"name": "sunburstArc",
+			"type": "arc",
+			"from": {"data": "tree"},
+			"encode": {
+				"enter": {
+					"x": {"signal": "width / 2"},
+					"y": {"signal": "height / 2"},
+					"stroke": {"value": "#e8e3d3"},
+					"cursor": {"value": "pointer"}
+				},
+				"update": {
+					"startAngle": {"field": "startAngle"},
+					"endAngle": {"field": "endAngle"},
+					"innerRadius": {"field": "innerRadius"},
+					"outerRadius": {"field": "outerRadius"},
+					"fill": {"scale": "palette", "field": "category"},
+					"fillOpacity": {"signal": "hoveredId && hoveredId !== datum.id ? 0.18 : datum.depth === 1 ? 0.88 : 0.76"},
+					"strokeOpacity": {"signal": "hoveredId && hoveredId !== datum.id ? 0.18 : 0.55"},
+					"strokeWidth": {"signal": "hoveredId === datum.id ? 1.5 : 0.8"},
+					"zindex": {"signal": "hoveredId === datum.id ? 2 : 0"},
+					"tooltip": {"signal": "datum.depth === 2 ? {'Platform': datum.platform, 'Category': datum.category, 'Followers': datum.audience_label, 'Share of Total %': datum.share_label} : datum.depth === 1 ? {'Followers': datum.audience_label, 'Share of Total %': datum.share_label} : {'Followers': datum.audience_label, 'Share of Total %': datum.share_label}"}
+				},
+				"hover": {
+					"strokeWidth": {"value": 1.8}
+				}
+			}
+		},
+		{
+			"type": "arc",
+			"encode": {
+				"enter": {
+					"x": {"signal": "width / 2"},
+					"y": {"signal": "height / 2"},
+					"fill": {"value": "#6a369d"},
+					"stroke": {"value": "rgba(50, 0, 110, 0.14)"},
+					"strokeWidth": {"value": 1}
+				},
+				"update": {
+					"startAngle": {"value": 0},
+					"endAngle": {"value": 6.283185307179586},
+					"innerRadius": {"signal": "innerRadius * 0.22"},
+					"outerRadius": {"signal": "innerRadius * 0.98"},
+					"tooltip": {"signal": "data('root_total').length ? {'Followers': data('root_total')[0].followers_label, 'Share of Total %': '100.0%'} : null"}
+				}
+			}
+		},
+		{
+			"type": "text",
+			"from": {
+				"data": "tree",
+				"transform": [
+					{"type": "filter", "expr": "datum.depth > 0 && datum.id !== 'Travis Scott' && datum.showLabel"}
+				]
+			},
+			"encode": {
+				"enter": {
+					"font": {"value": "Arial"},
+					"fontSize": {"signal": "datum.depth === 1 ? 12 : 10.5"},
+					"fontWeight": {"signal": "datum.depth === 1 ? 700 : 600"},
+					"fill": {"signal": "datum.depth === 1 ? '#2d0e4e' : '#22183b'"},
+					"text": {"signal": "datum.id === 'Travis Scott' ? '' : datum.depth === 1 ? datum.id : datum.platform"},
+					"align": {"field": "labelAlign"},
+					"baseline": {"value": "middle"}
+				},
+				"update": {
+					"x": {"field": "labelX"},
+					"y": {"field": "labelY"},
+					"opacity": {"signal": "hoveredId && hoveredId !== datum.id ? 0.45 : 0.95"}
+				}
+			}
+		},
+		{
+			"type": "text",
+			"encode": {
+				"enter": {
+					"x": {"signal": "width / 2"},
+					"y": {"signal": "height / 2 - 14"},
+					"font": {"value": "Georgia"},
+					"fontSize": {"value": 22},
+					"fontWeight": {"value": 600},
+					"fill": {"value": "#1c2026"},
+					"align": {"value": "center"},
+					"baseline": {"value": "middle"},
+					"text": {"value": "Digital Audience Ecosystem"}
+				}
+			}
+		},
+		{
+			"type": "text",
+			"encode": {
+				"enter": {
+					"x": {"signal": "width / 2"},
+					"y": {"signal": "height / 2 + 14"},
+					"font": {"value": "Arial"},
+					"fontSize": {"value": 10.5},
+					"fontWeight": {"value": 400},
+					"fill": {"value": "#171b21"},
+					"align": {"value": "center"},
+					"baseline": {"value": "middle"},
+					"text": {"value": "Distribution of Travis Scott's followers across social, streaming and video platforms"}
+				}
+			}
+		}
+	],
+	"config": {
+		"view": {"stroke": null},
+		"text": {"font": "Arial"}
+	}
+}

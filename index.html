@@ -15,17 +15,36 @@
 
 <body>
 
+  <!-- AMBIENT BACKGROUND LAYER -->
+  <div class="ambient-background">
+    <div class="hero-spotlight"></div>
+    <div class="blur-blob blur-blob-1"></div>
+    <div class="blur-blob blur-blob-2"></div>
+    <div class="blur-blob blur-blob-3"></div>
+    <div class="noise-overlay"></div>
+  </div>
   <main class="dashboard">
-
     <!-- HERO -->
-    <header class="hero">
-      <h1 class="hero-title">Travis Scott</h1>
-      <p class="hero-subtitle">A Cultural Phenomenon in modern Hip-Hop</p>
+    <header class="hero reveal">
+      <div class="hero-content">
+        <span class="hero-badge reveal reveal-delay-1">Visual Essay</span>
+        <h1 class="hero-title reveal reveal-delay-2">
+          <span class="title-line">Travis</span>
+          <span class="title-line indent">Scott</span>
+        </h1>
+        <p class="hero-subtitle reveal reveal-delay-3">
+          Tracing the evolution of Jacques Bermon Webster II from Houston producer to a defining cultural architect of
+          modern hip-hop.
+        </p>
+        <div class="scroll-indicator reveal reveal-delay-3">
+          <span class="scroll-text">Enter the Narrative</span>
+          <div class="scroll-line"></div>
+        </div>
       </div>
     </header>
 
     <!-- SECTION INTRO -->
-    <section class="section-intro">
+    <section class="section-intro reveal">
       <span class="section-label">Part One</span>
       <h2 class="section-headline">The Rise Through Music</h2>
       <p class="section-lede">
@@ -39,12 +58,12 @@
     </section>
 
     <!-- CHAPTER 01 — TIMELINE -->
-    <article class="chapter">
+    <article class="chapter reveal">
       <div class="chapter-meta">
-        <span class="chapter-number">I</span>
+        <span class="chapter-number">01</span>
         <h3 class="chapter-title">From Mixtapes to Mainstream</h3>
       </div>
-      <p class="chapter-description">
+      <p class="chapter-description brand-deals-description">
         Before the streaming era, Travis Scott built his audience
         through freely distributed mixtapes on platforms like DatPiff
         and SoundCloud. What followed was a rapid succession of
@@ -57,7 +76,7 @@
         <p class="graph-subtitle">Travis Scott's discography timeline, 2013 — 2025</p>
       </div>
 
-      <div class="timeline-frame">
+      <div class="timeline-frame reveal">
         <div id="timeline" class="timeline-chart"></div>
         <div id="release-overlay" class="release-overlay" aria-hidden="true"></div>
         <div id="release-tooltip" class="release-tooltip" role="tooltip"></div>
@@ -65,9 +84,9 @@
     </article>
 
     <!-- CHAPTER 02 — FIRST WEEK SALES -->
-    <article class="chapter">
+    <article class="chapter reveal">
       <div class="chapter-meta">
-        <span class="chapter-number">II</span>
+        <span class="chapter-number">02</span>
         <h3 class="chapter-title">How Each Release Landed</h3>
       </div>
       <p class="chapter-description">
@@ -82,18 +101,18 @@
         <p class="graph-subtitle">Comparing the commercial scale of major releases across the streaming era</p>
       </div>
 
-      <div class="chart-frame">
+      <div class="chart-frame reveal">
         <div id="first-week-sales" class="chart"></div>
       </div>
     </article>
 
     <!-- CHAPTER 03 — TOP SONGS -->
-    <article class="chapter">
+    <article class="chapter reveal">
       <div class="chapter-meta">
-        <span class="chapter-number">III</span>
+        <span class="chapter-number">03</span>
         <h3 class="chapter-title">The Tracks That Carried the Catalogue</h3>
       </div>
-      <p class="chapter-description">
+      <p class="chapter-description brand-deals-description">
         Beneath every commercial peak lies a handful of songs that
         carried the weight. While each album landed with its own
         cultural moment, only a few tracks transcended their era and
@@ -106,22 +125,44 @@
 
       <div class="graph-header">
         <h4 class="graph-title">The Songs That Defined an Era</h4>
-        <p class="graph-subtitle">Most-streamed Travis Scott tracks on Spotify, by parent album</p>
+        <p class="graph-subtitle">Most-streamed Travis Scott tracks on Spotify, by parent album (Updated May 2025)</p>
       </div>
 
-      <div class="chart-frame">
+      <div class="chart-frame reveal">
         <div id="top-songs" class="chart"></div>
+        <div class="network-legend top-songs-legend">
+          <div class="legend-title">Album</div>
+          <div class="legend-row">
+            <span class="legend-dot legend-circle" style="background:#c4a05c; opacity:0.9;"></span>
+            <span class="legend-label">Astroworld</span>
+          </div>
+          <div class="legend-row">
+            <span class="legend-dot legend-circle" style="background:#a85561; opacity:0.9;"></span>
+            <span class="legend-label">Utopia</span>
+          </div>
+          <div class="legend-row">
+            <span class="legend-dot legend-circle" style="background:#5d7a9c; opacity:0.9;"></span>
+            <span class="legend-label">Birds in the Trap</span>
+          </div>
+          <div class="legend-row">
+            <span class="legend-dot legend-circle" style="background:#8a6a4a; opacity:0.9;"></span>
+            <span class="legend-label">Rodeo</span>
+          </div>
+          <div class="legend-row">
+            <span class="legend-dot legend-circle" style="background:#8b7d9a; opacity:0.9;"></span>
+            <span class="legend-label">Single (Not in an Album)</span>
+          </div>
+        </div>
       </div>
 
       <p class="data-note">
         Streaming totals reflect cumulative Spotify plays as recorded
-        by kworb.net. Songs span solo work, album cuts, and standalone
-        singles released across his career.
+        by kworb.net at the end of May 2025.
       </p>
     </article>
 
     <!-- SECTION 2 INTRO -->
-    <section class="section-intro">
+    <section class="section-intro reveal">
       <span class="section-label">Part Two</span>
       <h2 class="section-headline">Expansion</h2>
       <p class="section-lede">
@@ -137,19 +178,25 @@
     </section>
 
     <!-- CHAPTER 04 — COLLABORATION NETWORK -->
-    <article class="chapter">
+    <article class="chapter reveal network-chapter">
       <div class="chapter-meta">
-        <span class="chapter-number">IV</span>
+        <span class="chapter-number">04</span>
         <h3 class="chapter-title">The Ecosystem Behind the Empire</h3>
       </div>
       <p class="chapter-description">
-        Behind every chart-topping release lies an invisible network of
-        collaborators, artists who lent their voices, producers who
-        sculpted the sound, and a handful of recurring partners who became
-        the architects of a sonic universe. The diagram below maps that
-        ecosystem: every artist and producer who has been involved in a
-        Travis Scott song, showing the vast connections that helped build his
-        catalogue and the frequency of those collaborations.
+        This node-link diagram visualises Travis Scott’s creative collaboration network
+        from 2013 to 2025, connecting every featured artist and producer who has contributed
+        to a Travis Scott song. Node size represents collaboration frequency, highlighting
+        the individuals who have played the most significant roles in shaping his musical
+        catalogue. Artists are colour-coded by their primary genre, while distinct node
+        shapes differentiate artists from producers, revealing the diversity of creative
+        influences within the network. Interactive filters allow users to explore
+        collaborations by year, collaborator type, and frequency level, while a search
+        function enables the inspection of specific contributors. Together, these features
+        illustrate how Travis Scott’s creative ecosystem expanded over time, evolving
+        from a small network of collaborators into a large and interconnected community
+        spanning multiple genres and areas of music production.
+
       </p>
 
       <div class="graph-header">
@@ -204,7 +251,9 @@
           </div>
         </div>
 
-        <div class="network-frame">
+        <div id="frequency-tooltip" class="network-tooltip frequency-tooltip" role="tooltip"></div>
+
+        <div class="network-frame reveal">
           <div id="network" class="network-chart"></div>
           <div id="network-tooltip" class="network-tooltip"></div>
           <div class="network-legend">
@@ -218,6 +267,35 @@
             </div>
             <div class="legend-size-note">Larger nodes = more collaborations</div>
           </div>
+          <div class="network-legend genre-legend" id="genre-legend">
+            <div class="legend-title">Artist Main Genre</div>
+            <div class="legend-row"><span class="legend-dot legend-circle"
+                style="background:#d0a8b0; opacity:0.95"></span><span class="legend-label">Pop</span></div>
+            <div class="legend-row"><span class="legend-dot legend-circle"
+                style="background:#a85561; opacity:0.95"></span><span class="legend-label">Mainstream Rap</span></div>
+            <div class="legend-row"><span class="legend-dot legend-circle"
+                style="background:#c4a05c; opacity:0.95"></span><span class="legend-label">Trap</span></div>
+            <div class="legend-row"><span class="legend-dot legend-circle"
+                style="background:#9c7a5d; opacity:0.95"></span><span class="legend-label">Southern Hip-Hop</span></div>
+            <div class="legend-row"><span class="legend-dot legend-circle"
+                style="background:#6a4a6a; opacity:0.95"></span><span class="legend-label">Drill</span></div>
+            <div class="legend-row"><span class="legend-dot legend-circle"
+                style="background:#8a9c5d; opacity:0.95"></span><span class="legend-label">Dancehall</span></div>
+            <div class="legend-row"><span class="legend-dot legend-circle"
+                style="background:#9c8a5d; opacity:0.95"></span><span class="legend-label">Soul</span></div>
+            <div class="legend-row"><span class="legend-dot legend-circle"
+                style="background:#5d8a9c; opacity:0.95"></span><span class="legend-label">Alternative</span></div>
+            <div class="legend-row"><span class="legend-dot legend-circle"
+                style="background:#5d7a9c; opacity:0.95"></span><span class="legend-label">Psychedelic</span></div>
+            <div class="legend-row"><span class="legend-dot legend-circle"
+                style="background:#9c5d7a; opacity:0.95"></span><span class="legend-label">International</span></div>
+            <div class="legend-row"><span class="legend-dot legend-circle"
+                style="background:#8a6a4a; opacity:0.95"></span><span class="legend-label">Cactus Jack</span></div>
+            <div class="legend-row"><span class="legend-dot legend-circle"
+                style="background:#7a5d4a; opacity:0.95"></span><span class="legend-label">Houston Legends</span></div>
+            <div class="legend-row"><span class="legend-dot legend-circle"
+                style="background:#8b7d9a; opacity:0.95"></span><span class="legend-label">Cultural Figures</span></div>
+          </div>
         </div>
 
         <p class="data-note">
@@ -230,18 +308,22 @@
     </article>
 
     <!-- CHAPTER 05 — SEARCH INTEREST MAP -->
-    <article class="chapter">
+    <article class="chapter reveal">
       <div class="chapter-meta">
-        <span class="chapter-number">V</span>
+        <span class="chapter-number">05</span>
         <h3 class="chapter-title">A Houston Sound Goes Global</h3>
       </div>
       <p class="chapter-description">
-        Commercial success in the United States was only the beginning.
-        As Travis Scott's catalogue expanded, so did the world's curiosity.
-        Google Trends data captures this shift — a measure of how often
-        people in each country searched his name. The map below traces
-        that curiosity, year by year, as a regional artist became a
-        global cultural reference point.
+        This choropleth map visualises global Google search interest in Travis Scott
+        from 2013 to 2025, allowing users to explore how public attention evolved across
+        different countries over time. Darker shades represent higher relative search interest,
+        highlighting the geographic spread of his popularity beyond the United States.
+        The interactive year filter reveals key periods of international growth,
+        demonstrating how album releases, major tours, and commercial collaborations
+        contributed to expanding his global audience. Together, these patterns illustrate
+        Travis Scott’s transformation from a regional hip-hop artist into a globally
+        recognised cultural figure with influence spanning multiple continents.
+
       </p>
 
       <div class="graph-header">
@@ -249,7 +331,7 @@
         <p class="graph-subtitle">Country-level Google search interest, 2013 — 2025</p>
       </div>
 
-      <div class="map-frame">
+      <div class="map-frame reveal">
         <div id="search-map" class="chart"></div>
       </div>
 
@@ -261,10 +343,57 @@
       </p>
     </article>
 
-    <!-- CHAPTER 06 — TOUR ATTENDANCE -->
-    <article class="chapter">
+    <!-- CHAPTER 06 — DIGITAL AUDIENCE ECOSYSTEM -->
+    <article class="chapter reveal followers-chapter">
       <div class="chapter-meta">
-        <span class="chapter-number">VI</span>
+        <span class="chapter-number">06</span>
+        <h3 class="chapter-title">Digital Audience Ecosystem</h3>
+      </div>
+      <p class="chapter-description followers-description">
+        This sunburst chart visualises Travis Scott's digital audience ecosystem across
+        social media, audio streaming, and video platforms. The chart highlights how his
+        audience is distributed across multiple channels of social media, audio streaming and video,
+        with Spotify and Instagram representing the largest segments of his online reach.
+        Together, these platforms demonstrate how Travis Scott's influence extends beyond
+        music alone, creating a diverse digital presence that supports his global cultural and commercial impact.
+      </p>
+
+      <div class="graph-header">
+        <h4 class="graph-title">Digital Audience Ecosystem</h4>
+        <p class="graph-subtitle">Distribution of Travis Scott's audience across social, streaming and video platforms (Updated May 2025)</p>
+      </div>
+
+      <div class="chart-frame reveal followers-frame">
+        <div id="followers-chart" class="chart" role="img"
+          aria-label="Sunburst chart showing Travis Scott's digital audience ecosystem across social media, audio streaming, and video platforms.">
+        </div>
+        <div class="followers-legend chart-legend small-legend">
+          <div class="legend-note">darker colour = higher follower count</div>
+        </div>
+      </div>
+
+      <p class="data-note followers-note">
+        Sector sizes represent the audience count for each platform and category,
+        combining followers, listeners, and subscribers from the shared dataset
+        which is updated to the values in end of May 2025.
+      </p>
+    </article>
+
+    <!-- SECTION 3 INTRO -->
+    <section class="section-intro reveal">
+      <span class="section-label">Part Three</span>
+      <h2 class="section-headline">Tours</h2>
+      <p class="section-lede">
+        Live performance translated recorded popularity into real-world audiences — this section examines
+        the jump from supporting slots to headline arenas, the growth in attendance across tour cycles,
+        and how those crowds reflect cultural scale and momentum.
+      </p>
+    </section>
+
+    <!-- CHAPTER 07 — TOUR ATTENDANCE -->
+    <article class="chapter reveal">
+      <div class="chapter-meta">
+        <span class="chapter-number">07</span>
         <h3 class="chapter-title">From Opening Act to Stadium Headliner</h3>
       </div>
       <p class="chapter-description">
@@ -285,15 +414,19 @@
         <p class="graph-subtitle">Headlining and supporting tour attendance, 2013 — 2025</p>
       </div>
 
-      <div class="chart-frame">
-        <div class="tours-legend-hint">
-          <span class="tours-legend-dot tours-legend-dot--headline"></span>
-          <span class="tours-legend-label">Headlining</span>
-          <span class="tours-legend-dot tours-legend-dot--support"></span>
-          <span class="tours-legend-label">Supporting</span>
-        </div>
+      <div class="chart-frame reveal">
         <div id="tours-chart" class="chart" role="img"
           aria-label="Line chart showing Travis Scott tour attendance growth from 2013 to 2025, comparing headlining and supporting roles.">
+        </div>
+        <div class="network-legend">
+          <div class="legend-row">
+            <span class="legend-dot legend-circle" style="background:#4c1d95; opacity:0.9;"></span>
+            <span class="legend-label">Headlining</span>
+          </div>
+          <div class="legend-row">
+            <span class="legend-dot legend-circle" style="background:#3a3632; opacity:0.75;"></span>
+            <span class="legend-label">Supporting</span>
+          </div>
         </div>
       </div>
       <p class="data-note">
@@ -303,13 +436,222 @@
       </p>
     </article>
 
+    <!-- CHAPTER 08 — PERFORMANCE FOOTPRINT -->
+    <article class="chapter reveal performances-chapter">
+      <div class="chapter-meta">
+        <span class="chapter-number">08</span>
+        <h3 class="chapter-title">Performance Footprint by Country</h3>
+      </div>
+      <p class="chapter-description performances-description">
+        This map visualises the geographic expansion of Travis Scott's live performances over
+        time, tours and festivals included. Bubble sizes represent the total number of performances within each country for
+        the selected year, highlighting both the concentration and distribution of touring
+        activity. While early performances were largely concentrated in the United States,
+        subsequent years show increasing activity across Europe, Oceania, Asia, South America,
+        and the Middle East. The visualisation demonstrates how growing commercial success and
+        international demand transformed Travis Scott from a primarily domestic performer into
+        a globally touring artist.
+        The United States remains the dominant touring market throughout Travis Scott's career,
+        reflecting his domestic fan base and commercial foundation. International expansion
+        accelerated from 2016 onwards, with Australia appearing in 2016 and widespread European
+        touring emerging by 2017. After a period of limited touring between 2020 and 2022, the
+        release of Utopia in 2023 marked a renewed phase of global expansion, with performances
+        extending across six continents and demonstrating the worldwide reach of his music and brand.
+      </p>
+
+      <div class="graph-header">
+        <h4 class="graph-title">Global Performance Reach</h4>
+        <p class="graph-subtitle">Performances by country, 2013 — 2025</p>
+      </div>
+
+      <div class="network-controls performances-controls">
+        <div class="control-group">
+          <span class="control-label">Mode</span>
+          <div class="toggle-group">
+            <button class="toggle-btn active" type="button" data-performances-mode="all">All Years</button>
+            <button class="toggle-btn" type="button" data-performances-mode="year">Year Slider</button>
+          </div>
+        </div>
+
+        <div class="control-group performances-slider-group is-hidden">
+          <span class="control-label">Selected Year</span>
+          <div class="performances-slider-row">
+            <input id="performances-year-slider" type="range" min="2013" max="2025" step="1" value="2025" aria-label="Select year for performances map" />
+            <span class="performances-year-value" id="performances-year-value">2025</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-frame reveal performances-frame">
+        <div id="performances-chart" class="chart" role="img"
+          aria-label="World map showing Travis Scott performances by country, with bubble size representing total performances.">
+        </div>
+        <div class="performances-legend chart-legend small-legend">
+          <div class="legend-note">Larger bubbles = More Performances</div>
+        </div>
+      </div>
+
+      <p class="data-note performances-note">
+        All-years mode aggregates performances across the full dataset. Year slider mode filters the map to a single year before summing performances by country.
+      </p>
+    </article>
+
+    <!-- SECTION 4 INTRO -->
+    <section class="section-intro reveal">
+      <span class="section-label">Part Four</span>
+      <h2 class="section-headline">Brand Ecosystem</h2>
+      <p class="section-lede">
+        Beyond records and tours, a modern artist operates within a wider brand ecosystem — partnerships,
+        fashion, festivals, and commercial ventures that extend cultural presence. This section explores
+        how Travis Scott's catalog, touring, and collaborations translate into brand influence and commercial
+        activity across industries.
+      </p>
+    </section>
+
+    <!-- CHAPTER 09 — BRAND DEALS TIMELINE -->
+    <article class="chapter reveal">
+      <div class="chapter-meta">
+        <span class="chapter-number">09</span>
+        <h3 class="chapter-title">Brand Collaborations & Media Impact Post 2017</h3>
+      </div>
+      <p class="chapter-description brand-deals-description">
+        This visualisation presents a bubble timeline of Travis Scott’s brand
+        collaborations, showing how his cultural and commercial influence has evolved
+        across different industries over time. Each point represents a specific
+        collaboration, positioned chronologically using year and month, and grouped by
+        category such as footwear, luxury fashion, gaming, food and beverage,
+        collectibles, and sports.
+
+        The size of each bubble is determined by a log-scaled GDELT impact score,
+        which represents the peak level of media attention recorded for that collaboration
+        within the selected time period. This transformation is used to reduce extreme skew
+        in media coverage and make smaller and larger events visually comparable.
+        Larger bubbles indicate collaborations that generated higher levels of global
+        news coverage and cultural visibility.
+
+        Overall, the chart highlights the shift from early niche fashion collaborations to
+        large-scale mainstream cultural moments, showing how Travis Scott’s brand ecosystem
+        expanded into multiple industries including global fashion houses, major sports brands,
+        entertainment platforms, and consumer products.
+      </p>
+
+      <div class="graph-header">
+        <h4 class="graph-title">Brand Deals Timeline Starting From 2017</h4>
+        <p class="graph-subtitle">GDELT peak mentions for brand collaborations, 2017 — 2025</p>
+      </div>
+
+      <div class="chart-frame reveal network-frame wide-expand brand-deals-frame">
+        <div id="brand-deals" class="chart"></div>
+        <div class="brand-deals-legend chart-legend small-legend">
+          <div class="legend-note">Higher GDELT Score = Larger Bubbles = Higher Media Attention</div>
+        </div>
+      </div>
+
+      <p class="data-note">
+        GDELT score represents relative media attention over time. The peak value is used to indicate the highest level
+        of news coverage for each collaboration within the selected period.
+      </p>
+    </article>
+
+    <!-- CHAPTER 10 — BRAND DEALS PRE-2017 PLACEHOLDER -->
+    <article class="chapter reveal graph-ten-scaffold">
+      <div class="chapter-meta">
+        <span class="chapter-number">10</span>
+        <h3 class="chapter-title">Brand Collaborations & Media Impact Pre 2017</h3>
+      </div>
+
+      <div class="graph-ten-layout">
+        <p class="chapter-description graph-ten-description">
+          This visualization explores Travis Scott’s earliest brand
+          collaborations prior to 2017, highlighting the gradual growth
+          of his cultural visibility before achieving mainstream success.
+          Each collaboration is plotted chronologically and connected to
+          illustrate the progression of his partnerships over time, from the
+          2013 Reebok campaign through to later collaborations with brands
+          such as BAPE and Maharishi in 2016. The vertical position and node
+          size represent the number of relevant media headlines identified for
+          each collaboration, providing an indication of their relative visibility
+          during this formative period. The chart reveals how Travis Scott’s early
+          collaborations were concentrated within the streetwear space and demonstrates
+          a steady increase in media attention, laying the foundation for the larger
+          cross-industry partnerships and cultural influence that would emerge after 2017.
+        </p>
+
+        <div class="graph-ten-chart-wrap">
+          <div class="graph-header graph-ten-header">
+            <h4 class="graph-title">Brand Deals Timeline Pre 2017</h4>
+            <p class="graph-subtitle">Placeholder for the pre-2017 bubble timeline</p>
+          </div>
+          <div class="chart-frame reveal graph-ten-frame">
+            <div id="brand-deals-pre-2017" class="chart"></div>
+            <div class="network-legend">
+              <div class="legend-row">
+                <span class="legend-dot legend-circle" style="background:#1f77b4; opacity:0.9;"></span>
+                <span class="legend-label">Footwear</span>
+              </div>
+              <div class="legend-row">
+                <span class="legend-dot legend-circle" style="background:#ff7f0e; opacity:0.9;"></span>
+                <span class="legend-label">Streetwear</span>
+              </div>
+            </div>
+          </div>
+          <p class="data-note graph-ten-data-note">
+            As comprehensive GDELT timeline data is not available for these early
+            collaborations, search result counts are used to provide an approximate
+            measure of media visibility and public attention prior to 2017.
+          </p>
+        </div>
+      </div>
+
+    </article>
+
+    <!-- CHAPTER 11 — REVENUE SANKey -->
+    <article class="chapter reveal revenue-chapter">
+      <div class="chapter-meta">
+        <span class="chapter-number">11</span>
+        <h3 class="chapter-title">Estimated Revenue Ecosystem</h3>
+      </div>
+      <p class="chapter-description revenue-description">
+        This Sankey diagram presents an estimated model of Travis Scott’s commercial
+        ecosystem using publicly reported figures and industry estimates across music,
+        live touring, brand partnerships, merchandise, and entertainment media.
+        The flow widths represent the relative scale of each revenue stream, illustrating
+        how a significant portion of his economic influence is generated outside of
+        traditional music activities. While streaming, album sales, and publishing royalties
+        remain important foundations of his career, live touring and brand partnerships
+        contribute substantially larger shares of the ecosystem shown. This shift highlights
+        how Travis Scott’s success extends beyond recorded music, reflecting his growth
+        into a global cultural figure whose influence spans fashion, gaming, food and
+        beverage, luxury brands, and live entertainment. The diagram demonstrates how modern
+        artists can leverage their musical success to build broader commercial platforms,
+        transforming from performers into multi-industry cultural phenomena.
+      </p>
+
+      <div class="graph-header">
+        <h4 class="graph-title">Estimated Revenue Flow</h4>
+        <p class="graph-subtitle">Conservative estimates, aggregated by category</p>
+      </div>
+
+      <div class="chart-frame reveal revenue-frame">
+        <div id="revenue-chart" class="chart"></div>
+      </div>
+
+      <p class="data-note revenue-note">
+        Important Context: All values represent estimated economic influence based on publicly reported figures,
+        industry reports, and media estimates. Certain brand partnerships, entertainment appearances, and
+        merchandise revenues are not fully disclosed publicly, meaning the actual total influence is likely higher
+        than shown.
+      </p>
+
+    </article>
+
     <!-- FOOTER -->
     <footer class="dashboard-footer">
       <p class="footer-line">
-        Data sourced from Billboard, kworb.net, Genius Lyrics, Wikipedia, and Google Trends.
+        Data sourced from Billboard, GDELT Project, kworb.net, Genius Lyrics, setlist.fm, Wikipedia, and Google Trends.
       </p>
       <p class="footer-line">
-        Designed by The Goat
+        AI was used in the production of this webpage
       </p>
     </footer>
 
@@ -319,8 +661,77 @@
   <script src="js/first_week_sales.js"></script>
   <script src="js/top_songs.js"></script>
   <script src="js/search_interest.js"></script>
+  <script src="js/followers.js"></script>
   <script src="js/collaborations.js"></script>
   <script src="js/tours.js"></script>
+  <script src="js/performances.js"></script>
+  <script src="js/brand_deals_post_2017.js"></script>
+  <script src="js/brand_deals_pre_2017.js"></script>
+  <script src="js/revenue.js?v=4"></script>
+
+  <script>
+    // Ensure revenue frame is visible and Sankey initializes (helps when reveal observer hasn't activated yet)
+    document.addEventListener('DOMContentLoaded', function(){
+      try{
+        var frame = document.querySelector('.revenue-frame');
+        if(frame && !frame.classList.contains('active')) frame.classList.add('active');
+      }catch(e){}
+      try{
+        if(window.RevenueSankey && typeof window.RevenueSankey.init === 'function'){
+          window.RevenueSankey.init().catch(function(){});
+        }
+      }catch(e){}
+    });
+  </script>
+
+  <!-- INTERSECTION OBSERVER FOR REVEAL ANIMATIONS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.15
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".reveal").forEach(element => {
+        observer.observe(element);
+      });
+    });
+  </script>
+
+  <!-- DYNAMIC VIEWPORT PROJECTION SCRIPT -->
+  <script>
+    function projectDynamicScale() {
+      const baseResolutions = { width: 1440, minWidth: 1000 };
+      const currentWidth = window.innerWidth;
+
+      // We only scale down for smaller screens to preserve aspect layout,
+      // without affecting native graph calculations.
+      if (currentWidth < baseResolutions.width && currentWidth > 480) {
+        // Calculate a safe clamp ratio
+        const scaleFactor = Math.max(0.65, currentWidth / baseResolutions.width);
+
+        // Apply native CSS zoom projecting the desktop layout downwards
+        // This ensures the graphs don't collapse on themselves internally
+        document.body.style.zoom = scaleFactor;
+      } else {
+        document.body.style.zoom = 1; // Reset on large viewports or strictly mobile sizes where stacking is preferred
+      }
+    }
+
+    // Attach resize listener and trigger on load
+    window.addEventListener('resize', projectDynamicScale);
+    projectDynamicScale();
+  </script>
 
 </body>
 
